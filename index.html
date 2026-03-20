@@ -132,9 +132,7 @@
       color:rgba(255,255,255,.86);
     }
 
-    .hero-copy p + p{
-      margin-top:18px;
-    }
+    .hero-copy p + p{margin-top:18px}
 
     .btn-wrap{
       position:relative;
@@ -162,9 +160,7 @@
       transition:.25s ease;
     }
 
-    .btn:hover{
-      transform:translateY(-3px) scale(1.015);
-    }
+    .btn:hover{transform:translateY(-3px) scale(1.015)}
 
     .tag{
       position:absolute;
@@ -187,7 +183,7 @@
 
     .hero-visual{
       position:relative;
-      min-height:620px;
+      min-height:640px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -196,13 +192,10 @@
     .hero-card{
       position:relative;
       width:100%;
-      min-height:420px;
+      min-height:470px;
       border-radius:34px;
       border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(122,91,255,.18), transparent 24%),
-        radial-gradient(circle at 75% 75%, rgba(255,120,220,.10), transparent 20%),
-        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       backdrop-filter:blur(16px);
       overflow:hidden;
       box-shadow:0 0 120px rgba(113,76,255,.12);
@@ -212,7 +205,11 @@
       justify-content:flex-end;
     }
 
-    .hero-card::before{
+    .hero-card::before,
+    .panel::before,
+    .service-card::before,
+    .client-card::before,
+    .contact-card::before{
       content:"";
       position:absolute;
       inset:0;
@@ -225,6 +222,30 @@
       pointer-events:none;
     }
 
+    .hero-card video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.55;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(122,91,255,.18), transparent 24%),
+        radial-gradient(circle at 75% 75%, rgba(255,120,220,.10), transparent 20%),
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.58));
+    }
+
+    .hero-tag{
+      right:18px;
+      top:18px;
+    }
+
     .hero-glow{
       position:absolute;
       inset:auto 20px 20px auto;
@@ -233,11 +254,12 @@
       border-radius:999px;
       background:radial-gradient(circle, rgba(114,76,255,.32), transparent 70%);
       filter:blur(30px);
+      z-index:1;
     }
 
-    .hero-tag{
-      right:18px;
-      top:18px;
+    .hero-content{
+      position:relative;
+      z-index:2;
     }
 
     .hero-card h2{
@@ -246,18 +268,15 @@
       line-height:.95;
       letter-spacing:-.04em;
       text-transform:uppercase;
-      position:relative;
-      z-index:1;
+      max-width:620px;
     }
 
     .hero-card p{
       margin:16px 0 0;
       font-size:18px;
       line-height:1.6;
-      color:rgba(255,255,255,.78);
-      max-width:540px;
-      position:relative;
-      z-index:1;
+      color:rgba(255,255,255,.82);
+      max-width:560px;
     }
 
     .glass{
@@ -292,22 +311,6 @@
       box-shadow:0 20px 80px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.08);
       border-radius:34px;
       overflow:hidden;
-    }
-
-    .panel::before,
-    .service-card::before,
-    .client-card::before,
-    .contact-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      padding:1px;
-      background:linear-gradient(135deg, rgba(255,255,255,.15), rgba(255,255,255,.03), rgba(149,116,255,.10));
-      -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite:xor;
-      mask-composite:exclude;
-      pointer-events:none;
     }
 
     .section-title{
@@ -345,7 +348,7 @@
 
     .service-card{
       position:relative;
-      min-height:230px;
+      min-height:260px;
       border-radius:30px;
       border:1px solid var(--line);
       background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
@@ -359,8 +362,32 @@
       transform:translateY(-6px);
     }
 
+    .service-card video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.10;
+    }
+
+    .service-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(122,91,255,.12), transparent 20%),
+        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.62));
+    }
+
+    .service-content{
+      position:relative;
+      z-index:1;
+      padding-top:34px;
+    }
+
     .service-card h3{
-      margin:34px 0 0;
+      margin:0;
       font-size:28px;
       line-height:.95;
       letter-spacing:-.03em;
@@ -370,13 +397,14 @@
       margin:14px 0 0;
       font-size:17px;
       line-height:1.6;
-      color:rgba(255,255,255,.74);
+      color:rgba(255,255,255,.78);
     }
 
     .card-tag{
       position:absolute;
       top:18px;
       left:18px;
+      z-index:2;
       background:var(--green);
       color:#101010;
       border-radius:14px;
@@ -565,11 +593,9 @@
     }
 
     @media (max-width: 1200px){
-      .hero-grid,.cta-grid,.services-grid,.contacts-grid{grid-template-columns:1fr 1fr}
-      .hero-grid{grid-template-columns:1fr}
-      .hero-visual{min-height:auto}
-      .cta-grid{grid-template-columns:1fr}
+      .hero-grid,.cta-grid{grid-template-columns:1fr}
       .services-grid,.contacts-grid{grid-template-columns:repeat(2,1fr)}
+      .hero-visual{min-height:auto}
     }
 
     @media (max-width: 760px){
@@ -613,11 +639,15 @@
         <div class="hero-visual">
           <div class="glass" style="right:40px; top:40px; width:220px; height:220px;"></div>
           <div class="glass" style="right:0; bottom:20px; width:120px; height:120px; animation-duration:7s;"></div>
+
           <div class="hero-card">
+            <video autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
             <div class="tag hero-tag">реализованные<br>видео</div>
             <div class="hero-glow"></div>
-            <h2>Монтаж, motion design и визуальная упаковка</h2>
-            <p>Работаю с блогерами, брендами и коммерческими проектами. Собираю ролики, которые выглядят уверенно, дорого и современно.</p>
+            <div class="hero-content">
+              <h2>Монтаж, motion design и визуальная упаковка</h2>
+              <p>Работаю с блогерами, брендами и коммерческими проектами. Собираю ролики, которые выглядят уверенно, дорого и современно.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -636,41 +666,60 @@
 
     <section id="services" class="services">
       <h2 class="section-title">Услуги</h2>
+
       <div class="services-grid">
         <div class="service-card">
+          <video autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
           <div class="card-tag">ютуб</div>
-          <h3>YouTube</h3>
-          <p>Длинные выпуски, интервью, экспертные форматы, нарезки и удержание внимания на протяжении всего ролика.</p>
+          <div class="service-content">
+            <h3>YouTube</h3>
+            <p>Длинные выпуски, интервью, экспертные форматы, нарезки и удержание внимания на протяжении всего ролика.</p>
+          </div>
         </div>
 
         <div class="service-card">
+          <video autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
           <div class="card-tag">рилс</div>
-          <h3>Reels</h3>
-          <p>Вертикальные ролики с хуками, титрами, ритмом и плотной подачей под социальные сети.</p>
+          <div class="service-content">
+            <h3>Reels</h3>
+            <p>Вертикальные ролики с хуками, титрами, ритмом и плотной подачей под социальные сети.</p>
+          </div>
         </div>
 
         <div class="service-card">
+          <video autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
           <div class="card-tag">шортс</div>
-          <h3>Shorts</h3>
-          <p>Короткие видео с быстрым захватом внимания, динамичным монтажом и аккуратной структурой.</p>
+          <div class="service-content">
+            <h3>Shorts</h3>
+            <p>Короткие видео с быстрым захватом внимания, динамичным монтажом и аккуратной структурой.</p>
+          </div>
         </div>
 
         <div class="service-card">
+          <video autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
           <div class="card-tag">моушен</div>
-          <h3>Motion Design</h3>
-          <p>Анимация, графика, заставки, типографика и акценты, которые выглядят дорого и современно.</p>
+          <div class="service-content">
+            <h3>Motion Design</h3>
+            <p>Анимация, графика, заставки, типографика и акценты, которые выглядят дорого и современно.</p>
+          </div>
         </div>
 
         <div class="service-card">
+          <video autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
           <div class="card-tag">дизайн</div>
-          <h3>Графический дизайн</h3>
-          <p>Баннеры, превью, обложки и рекламные материалы с сильной композицией и дорогой подачей.</p>
+          <div class="service-content">
+            <h3>Графический дизайн</h3>
+            <p>Баннеры, превью, обложки и рекламные материалы с сильной композицией и дорогой подачей.</p>
+          </div>
         </div>
 
         <div class="service-card">
+          <video autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
           <div class="card-tag">боты</div>
-          <h3>Создание ботов</h3>
-          <p>Telegram-боты, сценарии взаимодействия, автоматизация заявок, воронки и удобная упаковка под задачу.</p>
+          <div class="service-content">
+            <h3>Создание ботов</h3>
+            <p>Telegram-боты, сценарии взаимодействия, автоматизация заявок, воронки и удобная упаковка под задачу.</p>
+          </div>
         </div>
       </div>
     </section>
