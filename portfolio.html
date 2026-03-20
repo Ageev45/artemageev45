@@ -1,1 +1,47 @@
-<html><body><h1>PORTFOLIO</h1></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфолио</title>
+
+<style>
+body{background:#05050a;color:#fff;font-family:Arial;padding:60px}
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+}
+
+iframe{
+width:100%;
+height:300px;
+border-radius:20px;
+border:none;
+}
+
+h1{margin-bottom:40px}
+
+@media(max-width:900px){
+.grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Портфолио</h1>
+
+<div class="grid">
+
+<iframe src="https://www.youtube.com/embed/a6AGuSs1HkE"></iframe>
+<iframe src="https://www.youtube.com/embed/b10TUphGs3Y"></iframe>
+<iframe src="https://www.youtube.com/embed/H2tqW9VpVss"></iframe>
+<iframe src="https://www.youtube.com/embed/-QzUnVuZFU8"></iframe>
+<iframe src="https://www.youtube.com/embed/1gdle58ORHE"></iframe>
+<iframe src="https://www.youtube.com/embed/w5016ayRmDU?start=823"></iframe>
+
+</div>
+
+</body>
+</html>
