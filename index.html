@@ -10,7 +10,7 @@
   />
   <style>
     :root {
-      --bg: #05050a;
+      --bg: #040409;
       --bg2: #090817;
       --text: #f5f5f7;
       --muted: rgba(255, 255, 255, 0.74);
@@ -40,8 +40,9 @@
       color: var(--text);
       overflow-x: hidden;
       background:
-        radial-gradient(circle at 20% 0%, rgba(69, 49, 180, 0.24), transparent 26%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 45%, #030306 100%);
+        radial-gradient(circle at 14% 8%, rgba(111, 76, 255, 0.22), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(135, 84, 255, 0.12), transparent 18%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 42%, #030306 100%);
     }
 
     body::before {
@@ -53,7 +54,8 @@
         linear-gradient(rgba(100, 80, 255, 0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(100, 80, 255, 0.08) 1px, transparent 1px);
       background-size: 38px 38px;
-      opacity: 0.45;
+      opacity: 0.42;
+      z-index: 0;
     }
 
     body::after {
@@ -62,26 +64,33 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 12% 18%, rgba(128, 86, 255, 0.08), transparent 16%),
+        radial-gradient(circle at 12% 18%, rgba(128, 86, 255, 0.09), transparent 16%),
         radial-gradient(circle at 84% 28%, rgba(194, 87, 255, 0.08), transparent 14%),
         radial-gradient(circle at 62% 78%, rgba(124, 70, 255, 0.07), transparent 13%),
         radial-gradient(circle at 28% 88%, rgba(168, 88, 255, 0.06), transparent 10%);
+      z-index: 0;
     }
 
-    .container {
-      width: min(1680px, calc(100% - 48px));
-      margin: 0 auto;
+    .page {
       position: relative;
       z-index: 1;
+      width: 100%;
+    }
+
+    .section-inner {
+      width: min(1680px, calc(100% - 64px));
+      margin: 0 auto;
+      position: relative;
     }
 
     .nav-wrap {
+      width: 100%;
       display: flex;
       justify-content: flex-end;
-      padding-top: 8px;
+      padding: 8px 0 0;
       position: sticky;
-      top: 8px;
-      z-index: 40;
+      top: 6px;
+      z-index: 50;
     }
 
     .nav {
@@ -118,7 +127,7 @@
     }
 
     .hero {
-      padding: 24px 0 76px;
+      padding: 18px 0 58px;
     }
 
     .hero-grid {
@@ -126,7 +135,7 @@
       grid-template-columns: 1.02fr 0.98fr;
       gap: 56px;
       align-items: center;
-      min-height: 82vh;
+      min-height: 92vh;
     }
 
     .hero-title {
@@ -138,25 +147,25 @@
 
     .hero-title .line-top {
       display: block;
-      font-size: clamp(72px, 8vw, 136px);
-      margin-bottom: 12px;
+      font-size: clamp(82px, 8vw, 152px);
+      margin-bottom: 14px;
     }
 
     .hero-title .line-bottom {
       display: block;
-      font-size: clamp(72px, 8vw, 132px);
+      font-size: clamp(76px, 7.3vw, 144px);
       white-space: nowrap;
     }
 
     .hero-copy {
-      max-width: 780px;
+      max-width: 790px;
       margin-top: 28px;
     }
 
     .hero-copy p {
       margin: 0;
       font-size: 20px;
-      line-height: 1.62;
+      line-height: 1.64;
       color: rgba(255, 255, 255, 0.86);
     }
 
@@ -167,7 +176,7 @@
     .btn-wrap {
       position: relative;
       display: inline-block;
-      margin-top: 38px;
+      margin-top: 42px;
     }
 
     .btn {
@@ -188,6 +197,8 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.15),
         0 18px 60px rgba(90, 44, 255, 0.32);
       transition: 0.25s ease;
+      position: relative;
+      z-index: 2;
     }
 
     .btn:hover {
@@ -209,13 +220,13 @@
     }
 
     .tag.hero-btn {
-      right: -8px;
-      top: -28px;
+      right: -6px;
+      top: -36px;
     }
 
     .hero-visual {
       position: relative;
-      min-height: 650px;
+      min-height: 680px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -225,7 +236,7 @@
     .hero-card {
       position: relative;
       width: 100%;
-      min-height: 470px;
+      min-height: 500px;
       border-radius: var(--radius-xl);
       border: 1px solid var(--line);
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
@@ -264,7 +275,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.55;
+      opacity: 0.62;
     }
 
     .hero-card::after {
@@ -274,7 +285,7 @@
       background:
         radial-gradient(circle at 20% 20%, rgba(122, 91, 255, 0.18), transparent 24%),
         radial-gradient(circle at 75% 75%, rgba(255, 120, 220, 0.1), transparent 20%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.58));
+        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.58));
     }
 
     .hero-card-content {
@@ -287,8 +298,8 @@
 
     .hero-card-content h2 {
       margin: 0;
-      max-width: 720px;
-      font-size: clamp(34px, 3.2vw, 56px);
+      max-width: 760px;
+      font-size: clamp(36px, 3.3vw, 58px);
       line-height: 0.95;
       letter-spacing: -0.045em;
       text-transform: uppercase;
@@ -418,11 +429,11 @@
     }
 
     .services {
-      padding: 40px 0 12px;
+      padding: 36px 0 12px;
     }
 
     .services-grid {
-      margin-top: 32px;
+      margin-top: 30px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
@@ -450,7 +461,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.12;
+      opacity: 0.16;
     }
 
     .service-card::after {
@@ -459,7 +470,7 @@
       inset: 0;
       background:
         radial-gradient(circle at 20% 20%, rgba(122, 91, 255, 0.12), transparent 20%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.62));
+        linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.62));
     }
 
     .service-card .card-tag {
@@ -501,7 +512,7 @@
     .clients {
       position: relative;
       text-align: center;
-      padding: 44px 0 28px;
+      padding: 40px 0 18px;
       overflow: hidden;
     }
 
@@ -521,22 +532,24 @@
 
     .marquee-wrap {
       overflow: hidden;
-      margin-top: 36px;
+      margin-top: 34px;
       position: relative;
       z-index: 2;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
     }
 
     .marquee {
       display: flex;
       gap: 20px;
       width: max-content;
+      animation: marquee 16s linear infinite;
       padding-left: 0;
-      animation: marquee 18s linear infinite;
     }
 
     .marquee.reverse {
       margin-top: 20px;
-      animation-duration: 21s;
+      animation-duration: 19s;
       animation-direction: reverse;
     }
 
@@ -598,14 +611,25 @@
 
     .cta {
       position: relative;
-      width: calc(100% - 32px);
-      margin: 26px auto 0;
+      width: min(1560px, calc(100% - 96px));
+      margin: 20px auto 0;
       border-radius: 34px;
       border: 1px solid rgba(149, 116, 255, 0.2);
       background: linear-gradient(180deg, #5321b9 0%, #4a17a8 100%);
       box-shadow: 0 0 70px rgba(114, 76, 255, 0.25);
-      padding: 34px 42px;
+      padding: 32px 40px;
       overflow: hidden;
+    }
+
+    .cta::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.1), transparent 24%),
+        radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.08), transparent 20%);
+      pointer-events: none;
     }
 
     .cta-inner {
@@ -634,7 +658,7 @@
     }
 
     .contacts {
-      padding: 38px 0 78px;
+      padding: 34px 0 78px;
     }
 
     .contacts-inner {
@@ -742,18 +766,22 @@
       }
 
       .cta {
-        width: 100%;
+        width: calc(100% - 32px);
       }
     }
 
     @media (max-width: 760px) {
-      .container {
+      .section-inner {
         width: min(100% - 24px, 1680px);
       }
 
-      .hero-title .line-top,
+      .hero-title .line-top {
+        font-size: 58px;
+        margin-bottom: 10px;
+      }
+
       .hero-title .line-bottom {
-        font-size: 56px;
+        font-size: 54px;
         white-space: normal;
       }
 
@@ -797,53 +825,61 @@
         right: 6px;
         top: -34px;
       }
+
+      .cta {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <a href="#hero" class="to-top" aria-label="Наверх">↑</a>
 
-  <div class="container">
-    <div class="nav-wrap">
-      <div class="nav">
-        <a href="#hero">Главная</a>
-        <a href="#about">О нас</a>
-        <a href="#services">Услуги</a>
-        <a href="#clients">Клиенты</a>
-        <a href="#contacts">Контакты</a>
+  <div class="page">
+    <div class="section-inner">
+      <div class="nav-wrap">
+        <div class="nav">
+          <a href="#hero">Главная</a>
+          <a href="#about">О нас</a>
+          <a href="#services">Услуги</a>
+          <a href="#clients">Клиенты</a>
+          <a href="#contacts">Контакты</a>
+        </div>
       </div>
     </div>
 
     <section id="hero" class="hero">
-      <div class="hero-grid">
-        <div>
-          <h1 class="hero-title">
-            <span class="line-top">Продакшен</span>
-            <span class="line-bottom">Артем Агеев</span>
-          </h1>
+      <div class="section-inner">
+        <div class="hero-grid">
+          <div>
+            <h1 class="hero-title">
+              <span class="line-top">Продакшен</span>
+              <span class="line-bottom">Артем Агеев</span>
+            </h1>
 
-          <div class="hero-copy">
-            <p>Здесь начинается визуальная подача, которая выглядит дорого, собрано и современно. Я не просто монтирую ролики — я собираю эмоцию, ритм и стиль, чтобы видео работало на впечатление, узнаваемость и силу бренда.</p>
-            <p>Со мной ты получаешь монтаж, моушен-дизайн, рекламную упаковку и визуальные решения, которые помогают проекту выделяться, удерживать внимание и выглядеть на профессиональном уровне.</p>
+            <div class="hero-copy">
+              <p>Здесь начинается визуальная подача, которая выглядит дорого, собрано и современно. Я не просто монтирую ролики — я собираю эмоцию, ритм и стиль, чтобы видео работало на впечатление, узнаваемость и силу бренда.</p>
+              <p>Со мной ты получаешь монтаж, моушен-дизайн, рекламную упаковку и визуальные решения, которые помогают проекту выделяться, удерживать внимание и выглядеть на профессиональном уровне.</p>
+            </div>
+
+            <div class="btn-wrap">
+              <div class="tag hero-btn">Кейсы, стиль и<br>сильная подача</div>
+              <a class="btn" href="portfolio.html">Смотреть портфолио</a>
+            </div>
           </div>
 
-          <div class="btn-wrap">
-            <div class="tag hero-btn">Кейсы, стиль и<br>сильная подача</div>
-            <a class="btn" href="portfolio.html">Смотреть портфолио</a>
-          </div>
-        </div>
+          <div class="hero-visual">
+            <div class="glass-star" style="right: 12px; top: 18px; width: 150px; height: 150px;"></div>
+            <div class="glass-star" style="right: 24px; bottom: -10px; width: 120px; height: 120px; animation-duration: 7s;"></div>
 
-        <div class="hero-visual">
-          <div class="glass-star" style="right: 12px; top: 18px; width: 150px; height: 150px;"></div>
-          <div class="glass-star" style="right: 24px; bottom: -10px; width: 120px; height: 120px; animation-duration: 7s;"></div>
+            <div class="hero-card">
+              <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
+              <div class="tag hero-tag">реализованные<br>видео</div>
 
-          <div class="hero-card">
-            <video autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
-            <div class="tag hero-tag">реализованные<br>видео</div>
-
-            <div class="hero-card-content">
-              <h2>Монтаж, motion design и визуальная упаковка</h2>
-              <p>Работаю с блогерами, брендами и коммерческими проектами. Собираю ролики, которые выглядят уверенно, дорого и современно.</p>
+              <div class="hero-card-content">
+                <h2>Монтаж, motion design и визуальная упаковка</h2>
+                <p>Работаю с блогерами, брендами и коммерческими проектами. Собираю ролики, которые выглядят уверенно, дорого и современно.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -851,87 +887,93 @@
     </section>
 
     <section id="about" class="section">
-      <div class="panel about">
-        <video autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
+      <div class="section-inner">
+        <div class="panel about">
+          <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
 
-        <div class="about-content">
-          <h2 class="section-title">О нас</h2>
+          <div class="about-content">
+            <h2 class="section-title">О нас</h2>
 
-          <div class="about-copy">
-            <p>Продакшен Артема Агеева — это не просто монтаж, а цельный визуальный подход, в котором важны ритм, графика, композиция и ощущение уровня. Я собираю ролики так, чтобы они выглядели собранно, современно и производили сильное впечатление с первых секунд.</p>
-            <p>За время практики я работал с коммерческими проектами, контентом для брендов, экспертными роликами, вертикальными форматами и motion-упаковкой. Главная задача в каждом проекте — не просто красиво смонтировать, а создать подачу, которая усиливает смысл и делает материал заметнее.</p>
-            <p>Здесь делают не просто кадры, а визуальное ощущение продукта: от первого клика до финального впечатления. В итоге клиент получает не набор эффектов, а сильный и аккуратно собранный результат.</p>
+            <div class="about-copy">
+              <p>Продакшен Артема Агеева — это не просто монтаж, а цельный визуальный подход, в котором важны ритм, графика, композиция и ощущение уровня. Я собираю ролики так, чтобы они выглядели собранно, современно и производили сильное впечатление с первых секунд.</p>
+              <p>За время практики я работал с коммерческими проектами, контентом для брендов, экспертными роликами, вертикальными форматами и motion-упаковкой. Главная задача в каждом проекте — не просто красиво смонтировать, а создать подачу, которая усиливает смысл и делает материал заметнее.</p>
+              <p>Здесь делают не просто кадры, а визуальное ощущение продукта: от первого клика до финального впечатления. В итоге клиент получает не набор эффектов, а сильный и аккуратно собранный результат.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="services" class="services">
-      <h2 class="section-title">Услуги</h2>
+      <div class="section-inner">
+        <h2 class="section-title">Услуги</h2>
 
-      <div class="services-grid">
-        <div class="service-card">
-          <video autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
-          <div class="card-tag">ютуб</div>
-          <div class="service-content">
-            <h3>YouTube</h3>
-            <p>Длинные выпуски, интервью, экспертные форматы, нарезки и удержание внимания на протяжении всего ролика.</p>
+        <div class="services-grid">
+          <div class="service-card">
+            <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
+            <div class="card-tag">ютуб</div>
+            <div class="service-content">
+              <h3>YouTube</h3>
+              <p>Длинные выпуски, интервью, экспертные форматы, нарезки и удержание внимания на протяжении всего ролика.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="service-card">
-          <video autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
-          <div class="card-tag">рилс</div>
-          <div class="service-content">
-            <h3>Reels</h3>
-            <p>Вертикальные ролики с хуками, титрами, ритмом и плотной подачей под социальные сети.</p>
+          <div class="service-card">
+            <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
+            <div class="card-tag">рилс</div>
+            <div class="service-content">
+              <h3>Reels</h3>
+              <p>Вертикальные ролики с хуками, титрами, ритмом и плотной подачей под социальные сети.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="service-card">
-          <video autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
-          <div class="card-tag">шортс</div>
-          <div class="service-content">
-            <h3>Shorts</h3>
-            <p>Короткие видео с быстрым захватом внимания, динамичным монтажом и аккуратной структурой.</p>
+          <div class="service-card">
+            <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
+            <div class="card-tag">шортс</div>
+            <div class="service-content">
+              <h3>Shorts</h3>
+              <p>Короткие видео с быстрым захватом внимания, динамичным монтажом и аккуратной структурой.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="service-card">
-          <video autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
-          <div class="card-tag">моушен</div>
-          <div class="service-content">
-            <h3>Motion Design</h3>
-            <p>Анимация, графика, заставки, типографика и акценты, которые выглядят дорого и современно.</p>
+          <div class="service-card">
+            <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
+            <div class="card-tag">моушен</div>
+            <div class="service-content">
+              <h3>Motion Design</h3>
+              <p>Анимация, графика, заставки, типографика и акценты, которые выглядят дорого и современно.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="service-card">
-          <video autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
-          <div class="card-tag">дизайн</div>
-          <div class="service-content">
-            <h3>Графический дизайн</h3>
-            <p>Баннеры, превью, обложки и рекламные материалы с сильной композицией и дорогой подачей.</p>
+          <div class="service-card">
+            <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
+            <div class="card-tag">дизайн</div>
+            <div class="service-content">
+              <h3>Графический дизайн</h3>
+              <p>Баннеры, превью, обложки и рекламные материалы с сильной композицией и дорогой подачей.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="service-card">
-          <video autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
-          <div class="card-tag">боты</div>
-          <div class="service-content">
-            <h3>Создание ботов</h3>
-            <p>Telegram-боты, сценарии взаимодействия, автоматизация заявок, воронки и удобная упаковка под задачу.</p>
+          <div class="service-card">
+            <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
+            <div class="card-tag">боты</div>
+            <div class="service-content">
+              <h3>Создание ботов</h3>
+              <p>Telegram-боты, сценарии взаимодействия, автоматизация заявок, воронки и удобная упаковка под задачу.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="clients" class="clients">
-      <div class="glass-star" style="left: -24px; top: 6px; width: 170px; height: 170px; opacity: 0.84;"></div>
-      <div class="glass-star" style="right: 18px; bottom: 22px; width: 120px; height: 120px; opacity: 0.8;"></div>
+      <div class="section-inner">
+        <div class="glass-star" style="left: -10px; top: 6px; width: 150px; height: 150px; opacity: 0.84;"></div>
+        <div class="glass-star" style="right: 18px; bottom: 22px; width: 120px; height: 120px; opacity: 0.8;"></div>
 
-      <h2 class="section-title clients-title">Наши клиенты</h2>
-      <p>Со мной сотрудничают бренды, локальные компании, коммерческие студии и digital-проекты, которым нужен сильный монтаж и визуально уверенная подача.</p>
+        <h2 class="section-title clients-title">Наши клиенты</h2>
+        <p>Со мной сотрудничают локальные бренды, небольшие компании, коммерческие студии и digital-проекты, которым нужен сильный монтаж и визуально уверенная подача.</p>
+      </div>
 
       <div class="marquee-wrap">
         <div class="marquee">
@@ -1083,47 +1125,82 @@
         </div>
       </div>
 
-      <div class="cta">
-        <div class="cta-inner">
-          <div>
-            <h3>Проекты, которые выглядят сильно на любой площадке</h3>
-            <p>Я подготовил расширенную страницу с YouTube-видео, кейсами по дизайну, motion, Shorts, Reels и решениями по созданию ботов.</p>
+      <div class="section-inner">
+        <div class="cta">
+          <div class="cta-inner">
+            <div>
+              <h3>Проекты, которые выглядят сильно на любой площадке</h3>
+              <p>Я подготовил расширенную страницу с YouTube-видео, кейсами по дизайну, motion, Shorts, Reels и решениями по созданию ботов.</p>
+            </div>
+            <a class="btn" href="portfolio.html">Посмотреть портфолио</a>
           </div>
-          <a class="btn" href="portfolio.html">Посмотреть портфолио</a>
         </div>
       </div>
     </section>
 
     <section id="contacts" class="contacts">
-      <div class="panel contacts-inner">
-        <h2 class="section-title" style="text-align:center;">Контакты</h2>
-        <p class="lead">Готов подключиться к разовым задачам, постоянному сотрудничеству и регулярной работе с контентом. Все карточки ниже кликабельны для быстрого перехода.</p>
+      <div class="section-inner">
+        <div class="panel contacts-inner">
+          <h2 class="section-title" style="text-align:center;">Контакты</h2>
+          <p class="lead">Готов подключиться к разовым задачам, постоянному сотрудничеству и регулярной работе с контентом. Все карточки ниже кликабельны для быстрого перехода.</p>
 
-        <div class="contacts-grid">
-          <a class="contact-card" href="https://t.me/Maagic45" target="_blank" rel="noreferrer">
-            <div class="contact-label">Telegram</div>
-            <div class="contact-value">@Maagic45</div>
-          </a>
+          <div class="contacts-grid">
+            <a class="contact-card" href="https://t.me/Maagic45" target="_blank" rel="noreferrer">
+              <div class="contact-label">Telegram</div>
+              <div class="contact-value">@Maagic45</div>
+            </a>
 
-          <a class="contact-card" href="tel:+79630103405">
-            <div class="contact-label">MAX</div>
-            <div class="contact-value">+7 963 010-34-05</div>
-          </a>
+            <a class="contact-card" href="tel:+79630103405">
+              <div class="contact-label">MAX</div>
+              <div class="contact-value">+7 963 010-34-05</div>
+            </a>
 
-          <a class="contact-card" href="mailto:ageev_98@internet.ru">
-            <div class="contact-label">Email</div>
-            <div class="contact-value">ageev_98@internet.ru</div>
-          </a>
+            <a class="contact-card" href="mailto:ageev_98@internet.ru">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">ageev_98@internet.ru</div>
+            </a>
 
-          <a class="contact-card" href="#contacts">
-            <div class="contact-label">Формат работы</div>
-            <div class="contact-value">Удалённо / РФ и СНГ</div>
-          </a>
+            <a class="contact-card" href="#contacts">
+              <div class="contact-label">Формат работы</div>
+              <div class="contact-value">Удалённо / РФ и СНГ</div>
+            </a>
+          </div>
+
+          <div class="footer">Copyright © 2025 ArtemAgeev. All Rights Reserved.</div>
         </div>
-
-        <div class="footer">Copyright © 2025 ArtemAgeev. All Rights Reserved.</div>
       </div>
     </section>
   </div>
+
+  <script>
+    const forcePlayVideos = () => {
+      const videos = document.querySelectorAll(".auto-video");
+      videos.forEach((video) => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.loop = true;
+        video.autoplay = true;
+        video.playsInline = true;
+
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const retry = () => {
+              video.play().catch(() => {});
+              window.removeEventListener("touchstart", retry);
+              window.removeEventListener("click", retry);
+            };
+            window.addEventListener("touchstart", retry, { once: true });
+            window.addEventListener("click", retry, { once: true });
+          });
+        }
+      });
+    };
+
+    window.addEventListener("load", forcePlayVideos);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) forcePlayVideos();
+    });
+  </script>
 </body>
 </html>
