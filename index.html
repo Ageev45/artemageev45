@@ -6,7 +6,7 @@
   <title>Artem Ageev Production</title>
   <meta
     name="description"
-    content="Продакшен Артема Агеева: монтаж, motion design, графический дизайн, создание ботов и визуальная упаковка."
+    content="Продакшен Артема Агеева: монтаж, motion design, графический дизайн, создание ботов."
   />
   <style>
     :root {
@@ -20,7 +20,6 @@
       --violet: #7a5bff;
       --violet2: #5323dd;
       --green: #9be23b;
-      --radius-xl: 34px;
       --shadow: 0 20px 80px rgba(0, 0, 0, 0.22);
     }
 
@@ -52,19 +51,7 @@
         linear-gradient(rgba(100, 80, 255, 0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(100, 80, 255, 0.08) 1px, transparent 1px);
       background-size: 38px 38px;
-      opacity: 0.4;
-      z-index: 0;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 12% 18%, rgba(128, 86, 255, 0.09), transparent 16%),
-        radial-gradient(circle at 84% 28%, rgba(194, 87, 255, 0.08), transparent 14%),
-        radial-gradient(circle at 62% 78%, rgba(124, 70, 255, 0.07), transparent 13%);
+      opacity: 0.42;
       z-index: 0;
     }
 
@@ -111,14 +98,6 @@
       border-radius: 16px;
       background: rgba(0, 0, 0, 0.24);
       border: 1px solid var(--line);
-      transition: 0.25s ease;
-    }
-
-    .nav a:hover {
-      transform: translateY(-2px);
-      color: #fff;
-      border-color: rgba(122, 91, 255, 0.45);
-      background: rgba(255, 255, 255, 0.06);
     }
 
     .hero {
@@ -191,13 +170,6 @@
         0 0 60px rgba(114, 76, 255, 0.24),
         inset 0 1px 0 rgba(255, 255, 255, 0.15),
         0 18px 60px rgba(90, 44, 255, 0.32);
-      transition: 0.25s ease;
-      position: relative;
-      z-index: 2;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px) scale(1.015);
     }
 
     .badge {
@@ -231,49 +203,23 @@
       position: relative;
       width: 100%;
       min-height: 560px;
-    }
-
-    .hero-video-blend {
-      position: absolute;
-      inset: 0;
       overflow: hidden;
       border-radius: 38px;
-      isolation: isolate;
-      -webkit-mask-image: radial-gradient(circle at center, #000 70%, transparent 100%);
-      mask-image: radial-gradient(circle at center, #000 70%, transparent 100%);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(122, 91, 255, 0.18), transparent 26%),
+        radial-gradient(circle at 76% 70%, rgba(196, 102, 255, 0.12), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
     }
 
-    .hero-video-blend::before {
+    .hero-media::before {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: 2;
       background:
-        radial-gradient(circle at 18% 24%, rgba(122, 91, 255, 0.22), transparent 24%),
-        radial-gradient(circle at 76% 70%, rgba(196, 102, 255, 0.12), transparent 22%),
-        linear-gradient(180deg, rgba(7, 7, 13, 0.16), rgba(6, 6, 12, 0.60));
-    }
-
-    .hero-video-blend::after {
-      content: "";
-      position: absolute;
-      inset: -14px;
-      z-index: 3;
-      background:
-        radial-gradient(circle at top left, transparent 46%, rgba(4, 4, 9, 0.85) 86%),
-        radial-gradient(circle at top right, transparent 48%, rgba(4, 4, 9, 0.82) 88%),
-        radial-gradient(circle at bottom left, transparent 48%, rgba(4, 4, 9, 0.82) 88%),
-        radial-gradient(circle at bottom right, transparent 48%, rgba(4, 4, 9, 0.88) 88%);
+        linear-gradient(180deg, rgba(7, 7, 13, 0.12), rgba(6, 6, 12, 0.62));
       pointer-events: none;
-    }
-
-    .hero-video-blend video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.72;
-      transform: scale(1.03);
-      filter: saturate(1.05) contrast(1.04);
     }
 
     .hero-media-content {
@@ -281,7 +227,7 @@
       left: 36px;
       right: 36px;
       bottom: 34px;
-      z-index: 4;
+      z-index: 2;
     }
 
     .hero-media-content h2 {
@@ -307,107 +253,7 @@
       transform: rotate(-7deg);
     }
 
-    .star {
-      position: absolute;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.08) 18%, transparent 28%),
-        radial-gradient(circle at 74% 70%, rgba(111, 76, 255, 0.38), transparent 44%),
-        radial-gradient(circle at 46% 48%, rgba(255, 120, 220, 0.16), transparent 54%),
-        linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(183, 118, 255, 0.22) 30%, rgba(89, 67, 255, 0.45) 60%, rgba(255, 255, 255, 0.08));
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26), 0 0 60px rgba(118, 79, 255, 0.16);
-      backdrop-filter: blur(12px) saturate(135%);
-      clip-path: polygon(
-        50% 0%, 60% 20%, 84% 14%, 76% 38%, 100% 50%, 76% 62%, 84% 86%, 60% 80%,
-        50% 100%, 40% 80%, 16% 86%, 24% 62%, 0% 50%, 24% 38%, 16% 14%, 40% 20%
-      );
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .star-1 {
-      right: 12px;
-      top: 18px;
-      width: 150px;
-      height: 150px;
-    }
-
-    .star-2 {
-      right: 24px;
-      bottom: -10px;
-      width: 120px;
-      height: 120px;
-      animation-duration: 7s;
-    }
-
-    .star-3 {
-      left: -10px;
-      top: 6px;
-      width: 150px;
-      height: 150px;
-      opacity: 0.84;
-    }
-
-    .star-4 {
-      right: 18px;
-      bottom: 22px;
-      width: 120px;
-      height: 120px;
-      opacity: 0.8;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-16px) rotate(7deg);
-      }
-    }
-
-    .about,
-    .contacts-wrap,
-    .portfolio-topbar {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-    }
-
-    .about {
-      min-height: 620px;
-      background: transparent;
-    }
-
-    .about video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.34;
-      transform: scale(1.02);
-      -webkit-mask-image: radial-gradient(circle at center, #000 72%, transparent 100%);
-      mask-image: radial-gradient(circle at center, #000 72%, transparent 100%);
-    }
-
-    .about-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(6, 5, 12, 0.76) 0%, rgba(8, 8, 16, 0.68) 34%, rgba(8, 8, 16, 0.84) 100%),
-        radial-gradient(circle at 80% 20%, rgba(122, 91, 255, 0.14), transparent 22%);
-      -webkit-mask-image: radial-gradient(circle at center, #000 72%, transparent 100%);
-      mask-image: radial-gradient(circle at center, #000 72%, transparent 100%);
-    }
-
-    .about-content {
-      position: relative;
-      z-index: 2;
-      padding: 54px;
-    }
-
-    .section-title,
-    .page-title {
+    .section-title {
       margin: 0;
       font-size: clamp(46px, 6vw, 86px);
       line-height: 0.84;
@@ -415,25 +261,30 @@
       text-transform: uppercase;
     }
 
-    .page-title {
-      font-size: clamp(52px, 6vw, 96px);
+    .about,
+    .contacts-wrap {
+      position: relative;
+      border-radius: 34px;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
     }
 
-    .hero-copy p,
-    .about-content p,
-    .section-lead {
+    .about {
+      min-height: 620px;
+      padding: 54px;
+    }
+
+    .about p {
+      max-width: 980px;
       font-size: 18px;
       line-height: 1.66;
       color: rgba(255, 255, 255, 0.82);
+      margin: 26px 0 0;
     }
 
-    .section-lead {
-      max-width: 1100px;
-      margin: 18px auto 0;
-      text-align: center;
-    }
-
-    .about-content p + p {
+    .about p + p {
       margin-top: 18px;
     }
 
@@ -457,61 +308,10 @@
       backdrop-filter: blur(16px);
       padding: 30px;
       overflow: hidden;
-      transition: 0.25s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .service-card::before,
-    .contact-card::before,
-    .client-card::before,
-    .portfolio-card::before,
-    .contacts-wrap::before,
-    .portfolio-topbar::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.15),
-        rgba(255, 255, 255, 0.03),
-        rgba(149, 116, 255, 0.10)
-      );
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    .service-card video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.18;
-      transform: scale(1.04);
-    }
-
-    .service-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(122, 91, 255, 0.12), transparent 20%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.64));
-      z-index: 1;
     }
 
     .card-tag {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      z-index: 3;
+      display: inline-block;
       background: var(--green);
       color: #101010;
       border-radius: 14px;
@@ -524,9 +324,7 @@
     }
 
     .service-content {
-      position: relative;
-      z-index: 3;
-      padding-top: 34px;
+      padding-top: 24px;
     }
 
     .service-content h3 {
@@ -544,20 +342,22 @@
     }
 
     .clients {
-      position: relative;
       text-align: center;
       padding: 40px 0 18px;
-      overflow: hidden;
     }
 
-    .clients-head {
-      position: relative;
+    .section-lead {
+      max-width: 1100px;
+      margin: 18px auto 0;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.62;
+      color: rgba(255,255,255,0.78);
     }
 
     .clients-marquee-wrap {
       overflow: hidden;
       margin-top: 34px;
-      position: relative;
       width: 100vw;
       margin-left: calc(50% - 50vw);
     }
@@ -576,16 +376,11 @@
     }
 
     @keyframes marquee {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .client-card {
-      position: relative;
       display: flex;
       align-items: center;
       gap: 18px;
@@ -594,7 +389,7 @@
       padding: 0 24px;
       border-radius: 24px;
       border: 1px solid var(--line);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
       backdrop-filter: blur(14px);
       flex-shrink: 0;
     }
@@ -605,7 +400,7 @@
       border-radius: 18px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.12);
       background: linear-gradient(180deg, #171717, #0b0b0b);
       font-size: 18px;
       font-weight: 800;
@@ -628,33 +423,19 @@
       display: block;
       margin-top: 6px;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.56);
+      color: rgba(255,255,255,0.56);
     }
 
     .cta {
-      position: relative;
       width: min(1560px, calc(100% - 96px));
       margin: 20px auto 0;
       border-radius: 34px;
-      border: 1px solid rgba(149, 116, 255, 0.20);
       background: linear-gradient(180deg, #5321b9 0%, #4a17a8 100%);
-      box-shadow: 0 0 70px rgba(114, 76, 255, 0.25);
+      box-shadow: 0 0 70px rgba(114,76,255,0.25);
       padding: 32px 40px;
-      overflow: hidden;
-    }
-
-    .cta::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.10), transparent 24%),
-        radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.08), transparent 20%);
     }
 
     .cta-inner {
-      position: relative;
-      z-index: 2;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 28px;
@@ -674,7 +455,7 @@
       margin: 16px 0 0;
       font-size: 18px;
       line-height: 1.58;
-      color: rgba(255, 255, 255, 0.82);
+      color: rgba(255,255,255,0.82);
     }
 
     .contacts {
@@ -683,9 +464,6 @@
 
     .contacts-wrap {
       padding: 32px 32px 40px;
-      background: linear-gradient(180deg, var(--panel), var(--panel2));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: var(--shadow);
     }
 
     .center {
@@ -700,31 +478,23 @@
     }
 
     .contact-card {
-      position: relative;
       min-height: 150px;
       padding: 26px 28px;
       text-decoration: none;
       color: #fff;
       border-radius: 26px;
       border: 1px solid var(--line);
-      background: rgba(0, 0, 0, 0.30);
+      background: rgba(0,0,0,0.30);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: 0.25s ease;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(122, 91, 255, 0.45);
-      background: rgba(0, 0, 0, 0.40);
     }
 
     .contact-label {
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.28em;
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(255,255,255,0.45);
     }
 
     .contact-value {
@@ -741,7 +511,7 @@
       padding-top: 22px;
       border-top: 1px solid var(--line);
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(255,255,255,0.45);
     }
 
     .to-top {
@@ -751,136 +521,16 @@
       z-index: 60;
       width: 54px;
       height: 54px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 18px;
-      background: linear-gradient(180deg, rgba(122, 91, 255, 0.95), rgba(83, 35, 221, 0.95));
+      background: linear-gradient(180deg, rgba(122,91,255,0.95), rgba(83,35,221,0.95));
       color: #fff;
       text-decoration: none;
       display: grid;
       place-items: center;
       font-size: 22px;
       font-weight: 700;
-      box-shadow: 0 14px 34px rgba(83, 35, 221, 0.32);
-      transition: 0.25s ease;
-    }
-
-    .to-top:hover {
-      transform: translateY(-4px);
-    }
-
-    .portfolio-topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 18px 24px;
-      margin-top: 16px;
-      background: linear-gradient(180deg, var(--panel), var(--panel2));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: var(--shadow);
-    }
-
-    .portfolio-topbar small {
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-      color: rgba(255, 255, 255, 0.45);
-    }
-
-    .portfolio-topbar strong {
-      display: block;
-      margin-top: 6px;
-      font-size: 28px;
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-    }
-
-    .portfolio-hero {
-      position: relative;
-      padding: 34px 0 12px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .portfolio-grid {
-      margin-top: 34px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .portfolio-card {
-      position: relative;
-      border-radius: 30px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, var(--panel), var(--panel2));
-      overflow: hidden;
-      transition: 0.28s ease;
-      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.20);
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28), 0 0 40px rgba(114, 76, 255, 0.10);
-    }
-
-    .portfolio-card-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(122, 91, 255, 0.14), transparent 20%),
-        radial-gradient(circle at 80% 80%, rgba(255, 120, 220, 0.10), transparent 20%);
-    }
-
-    .portfolio-frame {
-      position: relative;
-      z-index: 1;
-      margin: 16px;
-      overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background: rgba(0, 0, 0, 0.55);
-    }
-
-    .portfolio-frame iframe,
-    .portfolio-frame img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      display: block;
-      border: none;
-      object-fit: cover;
-    }
-
-    .portfolio-content {
-      position: relative;
-      z-index: 1;
-      padding: 0 20px 22px;
-    }
-
-    .portfolio-content h3 {
-      margin: 2px 0 0;
-      font-size: 34px;
-      line-height: 0.96;
-      letter-spacing: -0.05em;
-      text-transform: uppercase;
-    }
-
-    .portfolio-content p {
-      margin: 14px 0 0;
-      font-size: 17px;
-      line-height: 1.62;
-      color: rgba(255, 255, 255, 0.76);
-    }
-
-    .note {
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(0, 0, 0, 0.25);
-      font-size: 14px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.56);
+      box-shadow: 0 14px 34px rgba(83,35,221,0.32);
     }
 
     @media (max-width: 1200px) {
@@ -890,8 +540,7 @@
       }
 
       .services-grid,
-      .contacts-grid,
-      .portfolio-grid {
+      .contacts-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -920,19 +569,17 @@
       }
 
       .hero-copy p,
-      .about-content p,
+      .about p,
       .section-lead {
         font-size: 17px;
       }
 
       .services-grid,
-      .contacts-grid,
-      .portfolio-grid {
+      .contacts-grid {
         grid-template-columns: 1fr;
       }
 
-      .btn,
-      .btn-primary {
+      .btn {
         width: 100%;
         text-align: center;
         padding: 18px 24px;
@@ -943,7 +590,7 @@
         font-size: 34px;
       }
 
-      .about-content {
+      .about {
         padding: 26px;
       }
 
@@ -962,15 +609,6 @@
 
       .cta {
         width: 100%;
-      }
-
-      .portfolio-topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .portfolio-content h3 {
-        font-size: 28px;
       }
     }
   </style>
@@ -1019,22 +657,7 @@
           </div>
 
           <div class="hero-right">
-            <div class="star star-1"></div>
-            <div class="star star-2"></div>
-
             <div class="hero-media">
-              <div class="hero-video-blend">
-                <video
-                  class="auto-video"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="auto"
-                  src="assets/hero.mp4"
-                ></video>
-              </div>
-
               <div class="badge badge-corner">реализованные<br />видео</div>
 
               <div class="hero-media-content">
@@ -1049,36 +672,19 @@
         </div>
       </section>
 
-      <section id="about" class="about">
+      <section id="about">
         <div class="shell">
-          <video
-            class="auto-video"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            src="assets/about.mp4"
-          ></video>
-
-          <div class="about-overlay"></div>
-
-          <div class="about-content">
+          <div class="about">
             <h2 class="section-title">О нас</h2>
             <p>
               Продакшен Артема Агеева — это не просто монтаж, а цельный визуальный подход,
-              в котором важны ритм, графика, композиция и ощущение уровня. Я собираю ролики так,
-              чтобы они выглядели собранно, современно и производили сильное впечатление с первых секунд.
+              в котором важны ритм, графика, композиция и ощущение уровня.
             </p>
             <p>
-              За время практики я работал с коммерческими проектами, контентом для брендов,
-              экспертными роликами, вертикальными форматами и motion-упаковкой.
-              Главная задача в каждом проекте — не просто красиво смонтировать,
-              а создать подачу, которая усиливает смысл и делает материал заметнее.
+              Я собираю ролики так, чтобы они выглядели собранно, современно
+              и производили сильное впечатление с первых секунд.
             </p>
             <p>
-              Здесь делают не просто кадры, а визуальное ощущение продукта:
-              от первого клика до финального впечатления.
               В итоге клиент получает не набор эффектов, а сильный и аккуратно собранный результат.
             </p>
           </div>
@@ -1091,7 +697,6 @@
 
           <div class="services-grid">
             <div class="service-card">
-              <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
               <div class="card-tag">ютуб</div>
               <div class="service-content">
                 <h3>YouTube</h3>
@@ -1100,7 +705,6 @@
             </div>
 
             <div class="service-card">
-              <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
               <div class="card-tag">рилс</div>
               <div class="service-content">
                 <h3>Reels</h3>
@@ -1109,7 +713,6 @@
             </div>
 
             <div class="service-card">
-              <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
               <div class="card-tag">шортс</div>
               <div class="service-content">
                 <h3>Shorts</h3>
@@ -1118,7 +721,6 @@
             </div>
 
             <div class="service-card">
-              <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
               <div class="card-tag">моушен</div>
               <div class="service-content">
                 <h3>Motion Design</h3>
@@ -1127,7 +729,6 @@
             </div>
 
             <div class="service-card">
-              <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
               <div class="card-tag">дизайн</div>
               <div class="service-content">
                 <h3>Графический дизайн</h3>
@@ -1136,7 +737,6 @@
             </div>
 
             <div class="service-card">
-              <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
               <div class="card-tag">боты</div>
               <div class="service-content">
                 <h3>Создание ботов</h3>
@@ -1148,10 +748,7 @@
       </section>
 
       <section id="clients" class="clients">
-        <div class="shell clients-head">
-          <div class="star star-3"></div>
-          <div class="star star-4"></div>
-
+        <div class="shell">
           <h2 class="section-title">Наши клиенты</h2>
           <p class="section-lead">
             Со мной сотрудничают локальные бренды, небольшие компании,
@@ -1172,24 +769,6 @@
             <div class="client-card"><div class="client-logo">NF</div><div class="client-meta"><strong>Nord Frame</strong><span>продакшен / медиа</span></div></div>
             <div class="client-card"><div class="client-logo">UT</div><div class="client-meta"><strong>Urban Taste</strong><span>food / visual</span></div></div>
             <div class="client-card"><div class="client-logo">PH</div><div class="client-meta"><strong>Pixel House</strong><span>design / content</span></div></div>
-            <div class="client-card"><div class="client-logo">DP</div><div class="client-meta"><strong>Drive Point</strong><span>auto / media</span></div></div>
-            <div class="client-card"><div class="client-logo">LU</div><div class="client-meta"><strong>Level Up</strong><span>education / promo</span></div></div>
-            <div class="client-card"><div class="client-logo">KL</div><div class="client-meta"><strong>Kedr Lab</strong><span>creative / branding</span></div></div>
-            <div class="client-card"><div class="client-logo">SM</div><div class="client-meta"><strong>Signal Media</strong><span>ads / content</span></div></div>
-          </div>
-
-          <div class="clients-marquee reverse">
-            <div class="client-card"><div class="client-logo">VR</div><div class="client-meta"><strong>Vision Room</strong><span>studio / commercial</span></div></div>
-            <div class="client-card"><div class="client-logo">PS</div><div class="client-meta"><strong>Pulse Studio</strong><span>motion / promo</span></div></div>
-            <div class="client-card"><div class="client-logo">SK</div><div class="client-meta"><strong>Skyline</strong><span>brand / campaign</span></div></div>
-            <div class="client-card"><div class="client-logo">NB</div><div class="client-meta"><strong>North Base</strong><span>visual / digital</span></div></div>
-            <div class="client-card"><div class="client-logo">FC</div><div class="client-meta"><strong>Food Craft</strong><span>retail / content</span></div></div>
-
-            <div class="client-card"><div class="client-logo">VR</div><div class="client-meta"><strong>Vision Room</strong><span>studio / commercial</span></div></div>
-            <div class="client-card"><div class="client-logo">PS</div><div class="client-meta"><strong>Pulse Studio</strong><span>motion / promo</span></div></div>
-            <div class="client-card"><div class="client-logo">SK</div><div class="client-meta"><strong>Skyline</strong><span>brand / campaign</span></div></div>
-            <div class="client-card"><div class="client-logo">NB</div><div class="client-meta"><strong>North Base</strong><span>visual / digital</span></div></div>
-            <div class="client-card"><div class="client-logo">FC</div><div class="client-meta"><strong>Food Craft</strong><span>retail / content</span></div></div>
           </div>
         </div>
 
@@ -1215,7 +794,6 @@
             <h2 class="section-title center">Контакты</h2>
             <p class="section-lead">
               Готов подключиться к разовым задачам, постоянному сотрудничеству и регулярной работе с контентом.
-              Все карточки ниже кликабельны для быстрого перехода.
             </p>
 
             <div class="contacts-grid">
@@ -1246,46 +824,5 @@
       </section>
     </main>
   </div>
-
-  <script>
-    function forcePlayVideos() {
-      const videos = document.querySelectorAll(".auto-video");
-
-      videos.forEach((video) => {
-        video.muted = true;
-        video.defaultMuted = true;
-        video.loop = true;
-        video.autoplay = true;
-        video.playsInline = true;
-        video.setAttribute("muted", "");
-        video.setAttribute("autoplay", "");
-        video.setAttribute("loop", "");
-        video.setAttribute("playsinline", "");
-        video.setAttribute("webkit-playsinline", "");
-
-        const tryPlay = () => {
-          const promise = video.play();
-          if (promise && typeof promise.catch === "function") {
-            promise.catch(() => {});
-          }
-        };
-
-        if (video.readyState >= 2) {
-          tryPlay();
-        } else {
-          video.addEventListener("canplay", tryPlay, { once: true });
-          video.addEventListener("loadeddata", tryPlay, { once: true });
-        }
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", forcePlayVideos);
-    window.addEventListener("load", forcePlayVideos);
-    document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) forcePlayVideos();
-    });
-    window.addEventListener("click", forcePlayVideos, { once: true });
-    window.addEventListener("touchstart", forcePlayVideos, { once: true });
-  </script>
 </body>
 </html>
