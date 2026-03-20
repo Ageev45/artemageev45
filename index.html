@@ -22,8 +22,6 @@
       --green: #9be23b;
       --shadow: 0 20px 80px rgba(0, 0, 0, 0.22);
       --radius-xl: 34px;
-      --radius-lg: 28px;
-      --radius-md: 22px;
     }
 
     * {
@@ -226,7 +224,7 @@
 
     .hero-visual {
       position: relative;
-      min-height: 680px;
+      min-height: 700px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -236,56 +234,57 @@
     .hero-card {
       position: relative;
       width: 100%;
-      min-height: 500px;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--line);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-      backdrop-filter: blur(16px);
-      overflow: hidden;
-      box-shadow: 0 0 120px rgba(113, 76, 255, 0.12);
-      padding: 32px;
+      min-height: 560px;
+      overflow: visible;
     }
 
-    .hero-card::before,
-    .panel::before,
-    .service-card::before,
-    .client-card::before,
-    .contact-card::before,
-    .cta::before {
-      content: "";
+    /* Убираем рамочный вид и делаем мягкое слияние */
+    .hero-video-shell {
       position: absolute;
       inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.15),
-        rgba(255, 255, 255, 0.03),
-        rgba(149, 116, 255, 0.1)
-      );
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
+      overflow: hidden;
+      border-radius: 38px;
+      background: transparent;
+      isolation: isolate;
+      -webkit-mask-image:
+        radial-gradient(circle at center, #000 70%, transparent 100%);
+      mask-image:
+        radial-gradient(circle at center, #000 70%, transparent 100%);
     }
 
-    .hero-card video {
+    .hero-video-shell video {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.62;
+      opacity: 0.72;
+      filter: saturate(1.05) contrast(1.04);
+      transform: scale(1.03);
     }
 
-    .hero-card::after {
+    .hero-video-shell::before {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: 2;
       background:
-        radial-gradient(circle at 20% 20%, rgba(122, 91, 255, 0.18), transparent 24%),
-        radial-gradient(circle at 75% 75%, rgba(255, 120, 220, 0.1), transparent 20%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.58));
+        radial-gradient(circle at 18% 24%, rgba(122, 91, 255, 0.22), transparent 24%),
+        radial-gradient(circle at 76% 70%, rgba(196, 102, 255, 0.12), transparent 22%),
+        linear-gradient(180deg, rgba(7, 7, 13, 0.18), rgba(6, 6, 12, 0.58));
+    }
+
+    .hero-video-shell::after {
+      content: "";
+      position: absolute;
+      inset: -14px;
+      z-index: 3;
+      background:
+        radial-gradient(circle at top left, transparent 46%, rgba(4, 4, 9, 0.85) 86%),
+        radial-gradient(circle at top right, transparent 48%, rgba(4, 4, 9, 0.82) 88%),
+        radial-gradient(circle at bottom left, transparent 48%, rgba(4, 4, 9, 0.82) 88%),
+        radial-gradient(circle at bottom right, transparent 48%, rgba(4, 4, 9, 0.88) 88%);
+      pointer-events: none;
     }
 
     .hero-card-content {
@@ -293,7 +292,7 @@
       left: 36px;
       right: 36px;
       bottom: 34px;
-      z-index: 2;
+      z-index: 4;
     }
 
     .hero-card-content h2 {
@@ -317,6 +316,7 @@
       right: 18px;
       top: 18px;
       transform: rotate(-7deg);
+      z-index: 5;
     }
 
     .glass-star {
@@ -368,7 +368,7 @@
       position: relative;
       background: linear-gradient(180deg, var(--panel), var(--panel2));
       backdrop-filter: blur(16px);
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255,255,255,0.06);
       box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-xl);
       overflow: hidden;
@@ -378,6 +378,9 @@
       position: relative;
       min-height: 620px;
       overflow: hidden;
+      border: none;
+      box-shadow: none;
+      background: transparent;
     }
 
     .about video {
@@ -386,7 +389,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.28;
+      opacity: 0.34;
+      transform: scale(1.02);
+      -webkit-mask-image:
+        radial-gradient(circle at center, #000 72%, transparent 100%);
+      mask-image:
+        radial-gradient(circle at center, #000 72%, transparent 100%);
     }
 
     .about::after {
@@ -394,8 +402,12 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(6, 5, 12, 0.74) 0%, rgba(8, 8, 16, 0.72) 34%, rgba(8, 8, 16, 0.86) 100%),
+        linear-gradient(90deg, rgba(6, 5, 12, 0.76) 0%, rgba(8, 8, 16, 0.68) 34%, rgba(8, 8, 16, 0.84) 100%),
         radial-gradient(circle at 80% 20%, rgba(122, 91, 255, 0.14), transparent 22%);
+      -webkit-mask-image:
+        radial-gradient(circle at center, #000 72%, transparent 100%);
+      mask-image:
+        radial-gradient(circle at center, #000 72%, transparent 100%);
     }
 
     .about-content {
@@ -461,7 +473,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.16;
+      opacity: 0.18;
+      transform: scale(1.04);
     }
 
     .service-card::after {
@@ -470,14 +483,15 @@
       inset: 0;
       background:
         radial-gradient(circle at 20% 20%, rgba(122, 91, 255, 0.12), transparent 20%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.62));
+        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.64));
+      z-index: 1;
     }
 
     .service-card .card-tag {
       position: absolute;
       top: 18px;
       left: 18px;
-      z-index: 2;
+      z-index: 3;
       background: var(--green);
       color: #101010;
       border-radius: 14px;
@@ -491,7 +505,7 @@
 
     .service-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       padding-top: 34px;
     }
 
@@ -873,7 +887,10 @@
             <div class="glass-star" style="right: 24px; bottom: -10px; width: 120px; height: 120px; animation-duration: 7s;"></div>
 
             <div class="hero-card">
-              <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
+              <div class="hero-video-shell">
+                <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
+              </div>
+
               <div class="tag hero-tag">реализованные<br>видео</div>
 
               <div class="hero-card-content">
@@ -888,7 +905,7 @@
 
     <section id="about" class="section">
       <div class="section-inner">
-        <div class="panel about">
+        <div class="about">
           <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
 
           <div class="about-content">
@@ -977,151 +994,27 @@
 
       <div class="marquee-wrap">
         <div class="marquee">
-          <div class="client-card">
-            <div class="client-logo">NF</div>
-            <div class="client-meta">
-              <strong>Nord Frame</strong>
-              <span>продакшен / медиа</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">UT</div>
-            <div class="client-meta">
-              <strong>Urban Taste</strong>
-              <span>food / visual</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">PH</div>
-            <div class="client-meta">
-              <strong>Pixel House</strong>
-              <span>design / content</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">DP</div>
-            <div class="client-meta">
-              <strong>Drive Point</strong>
-              <span>auto / media</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">LU</div>
-            <div class="client-meta">
-              <strong>Level Up</strong>
-              <span>education / promo</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">KL</div>
-            <div class="client-meta">
-              <strong>Kedr Lab</strong>
-              <span>creative / branding</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">SM</div>
-            <div class="client-meta">
-              <strong>Signal Media</strong>
-              <span>ads / content</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">NF</div>
-            <div class="client-meta">
-              <strong>Nord Frame</strong>
-              <span>продакшен / медиа</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">UT</div>
-            <div class="client-meta">
-              <strong>Urban Taste</strong>
-              <span>food / visual</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">PH</div>
-            <div class="client-meta">
-              <strong>Pixel House</strong>
-              <span>design / content</span>
-            </div>
-          </div>
+          <div class="client-card"><div class="client-logo">NF</div><div class="client-meta"><strong>Nord Frame</strong><span>продакшен / медиа</span></div></div>
+          <div class="client-card"><div class="client-logo">UT</div><div class="client-meta"><strong>Urban Taste</strong><span>food / visual</span></div></div>
+          <div class="client-card"><div class="client-logo">PH</div><div class="client-meta"><strong>Pixel House</strong><span>design / content</span></div></div>
+          <div class="client-card"><div class="client-logo">DP</div><div class="client-meta"><strong>Drive Point</strong><span>auto / media</span></div></div>
+          <div class="client-card"><div class="client-logo">LU</div><div class="client-meta"><strong>Level Up</strong><span>education / promo</span></div></div>
+          <div class="client-card"><div class="client-logo">KL</div><div class="client-meta"><strong>Kedr Lab</strong><span>creative / branding</span></div></div>
+          <div class="client-card"><div class="client-logo">SM</div><div class="client-meta"><strong>Signal Media</strong><span>ads / content</span></div></div>
+          <div class="client-card"><div class="client-logo">NF</div><div class="client-meta"><strong>Nord Frame</strong><span>продакшен / медиа</span></div></div>
+          <div class="client-card"><div class="client-logo">UT</div><div class="client-meta"><strong>Urban Taste</strong><span>food / visual</span></div></div>
+          <div class="client-card"><div class="client-logo">PH</div><div class="client-meta"><strong>Pixel House</strong><span>design / content</span></div></div>
         </div>
 
         <div class="marquee reverse">
-          <div class="client-card">
-            <div class="client-logo">VR</div>
-            <div class="client-meta">
-              <strong>Vision Room</strong>
-              <span>studio / commercial</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">PS</div>
-            <div class="client-meta">
-              <strong>Pulse Studio</strong>
-              <span>motion / promo</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">SK</div>
-            <div class="client-meta">
-              <strong>Skyline</strong>
-              <span>brand / campaign</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">NB</div>
-            <div class="client-meta">
-              <strong>North Base</strong>
-              <span>visual / digital</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">FC</div>
-            <div class="client-meta">
-              <strong>Food Craft</strong>
-              <span>retail / content</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">VR</div>
-            <div class="client-meta">
-              <strong>Vision Room</strong>
-              <span>studio / commercial</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">PS</div>
-            <div class="client-meta">
-              <strong>Pulse Studio</strong>
-              <span>motion / promo</span>
-            </div>
-          </div>
-
-          <div class="client-card">
-            <div class="client-logo">SK</div>
-            <div class="client-meta">
-              <strong>Skyline</strong>
-              <span>brand / campaign</span>
-            </div>
-          </div>
+          <div class="client-card"><div class="client-logo">VR</div><div class="client-meta"><strong>Vision Room</strong><span>studio / commercial</span></div></div>
+          <div class="client-card"><div class="client-logo">PS</div><div class="client-meta"><strong>Pulse Studio</strong><span>motion / promo</span></div></div>
+          <div class="client-card"><div class="client-logo">SK</div><div class="client-meta"><strong>Skyline</strong><span>brand / campaign</span></div></div>
+          <div class="client-card"><div class="client-logo">NB</div><div class="client-meta"><strong>North Base</strong><span>visual / digital</span></div></div>
+          <div class="client-card"><div class="client-logo">FC</div><div class="client-meta"><strong>Food Craft</strong><span>retail / content</span></div></div>
+          <div class="client-card"><div class="client-logo">VR</div><div class="client-meta"><strong>Vision Room</strong><span>studio / commercial</span></div></div>
+          <div class="client-card"><div class="client-logo">PS</div><div class="client-meta"><strong>Pulse Studio</strong><span>motion / promo</span></div></div>
+          <div class="client-card"><div class="client-logo">SK</div><div class="client-meta"><strong>Skyline</strong><span>brand / campaign</span></div></div>
         </div>
       </div>
 
@@ -1173,34 +1066,47 @@
   </div>
 
   <script>
-    const forcePlayVideos = () => {
+    function forcePlayVideos() {
       const videos = document.querySelectorAll(".auto-video");
+
       videos.forEach((video) => {
         video.muted = true;
         video.defaultMuted = true;
         video.loop = true;
         video.autoplay = true;
         video.playsInline = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("autoplay", "");
+        video.setAttribute("loop", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
 
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            const retry = () => {
-              video.play().catch(() => {});
-              window.removeEventListener("touchstart", retry);
-              window.removeEventListener("click", retry);
-            };
-            window.addEventListener("touchstart", retry, { once: true });
-            window.addEventListener("click", retry, { once: true });
-          });
+        const start = () => {
+          const promise = video.play();
+          if (promise !== undefined) {
+            promise.catch(() => {});
+          }
+        };
+
+        if (video.readyState >= 2) {
+          start();
+        } else {
+          video.addEventListener("canplay", start, { once: true });
+          video.addEventListener("loadeddata", start, { once: true });
         }
       });
-    };
+    }
 
     window.addEventListener("load", forcePlayVideos);
+    document.addEventListener("DOMContentLoaded", forcePlayVideos);
     document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) forcePlayVideos();
+      if (!document.hidden) {
+        forcePlayVideos();
+      }
     });
+
+    window.addEventListener("click", forcePlayVideos, { once: true });
+    window.addEventListener("touchstart", forcePlayVideos, { once: true });
   </script>
 </body>
 </html>
