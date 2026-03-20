@@ -276,8 +276,8 @@ body::before {
 
 .hero-card-content h2 {
   margin: 0;
-  max-width: 550px;
-  font-size: clamp(36px, 3.3vw, 58px);
+  max-width: 750px;
+  font-size: clamp(26px, 3.3vw, 50px);
   line-height: 0.95;
   letter-spacing: -0.045em;
   text-transform: uppercase;
