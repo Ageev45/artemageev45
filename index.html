@@ -1,19 +1,828 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Artem Ageev</title>
-<style>
-body{margin:0;background:#000;color:#fff;font-family:Arial}
-h1{font-size:60px;padding:40px}
-.card{margin:20px;padding:30px;border-radius:20px;background:#111}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artem Ageev Production</title>
+  <meta
+    name="description"
+    content="Продакшен Артема Агеева: монтаж, motion design, графический дизайн, создание ботов."
+  />
+  <style>
+    :root {
+      --bg: #040409;
+      --bg2: #090817;
+      --text: #f5f5f7;
+      --muted: rgba(255, 255, 255, 0.74);
+      --line: rgba(255, 255, 255, 0.10);
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel2: rgba(255, 255, 255, 0.03);
+      --violet: #7a5bff;
+      --violet2: #5323dd;
+      --green: #9be23b;
+      --shadow: 0 20px 80px rgba(0, 0, 0, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 14% 8%, rgba(111, 76, 255, 0.22), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(135, 84, 255, 0.12), transparent 18%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 42%, #030306 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(100, 80, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 80, 255, 0.08) 1px, transparent 1px);
+      background-size: 38px 38px;
+      opacity: 0.42;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .shell {
+      width: min(1680px, calc(100% - 64px));
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .header {
+      position: sticky;
+      top: 8px;
+      z-index: 50;
+      padding-top: 10px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    .nav a {
+      color: rgba(255, 255, 255, 0.80);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 11px 16px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.24);
+      border: 1px solid var(--line);
+    }
+
+    .hero {
+      padding: 24px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 56px;
+      align-items: center;
+      min-height: 92vh;
+    }
+
+    .hero-title {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: -0.075em;
+      line-height: 0.80;
+    }
+
+    .hero-title .line-top {
+      display: block;
+      font-size: clamp(82px, 8vw, 152px);
+      margin-bottom: 14px;
+    }
+
+    .hero-title .line-bottom {
+      display: block;
+      font-size: clamp(76px, 7.3vw, 144px);
+      white-space: nowrap;
+    }
+
+    .hero-copy {
+      max-width: 790px;
+      margin-top: 28px;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.64;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .hero-copy p + p {
+      margin-top: 18px;
+    }
+
+    .hero-actions {
+      position: relative;
+      display: inline-block;
+      margin-top: 42px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      border: none;
+      border-radius: 26px;
+      padding: 22px 54px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, var(--violet) 0%, var(--violet2) 100%);
+      box-shadow:
+        0 0 24px rgba(114, 76, 255, 0.62),
+        0 0 60px rgba(114, 76, 255, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 18px 60px rgba(90, 44, 255, 0.32);
+    }
+
+    .badge {
+      position: absolute;
+      z-index: 5;
+      transform: rotate(-8deg);
+      background: var(--green);
+      color: #111;
+      border-radius: 14px;
+      padding: 10px 16px;
+      box-shadow: 0 0 28px rgba(155, 226, 59, 0.30);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .badge-hero {
+      right: -6px;
+      top: -34px;
+    }
+
+    .hero-right {
+      position: relative;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-media {
+      position: relative;
+      width: 100%;
+      min-height: 560px;
+      overflow: hidden;
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(122, 91, 255, 0.18), transparent 26%),
+        radial-gradient(circle at 76% 70%, rgba(196, 102, 255, 0.12), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(7, 7, 13, 0.12), rgba(6, 6, 12, 0.62));
+      pointer-events: none;
+    }
+
+    .hero-media-content {
+      position: absolute;
+      left: 36px;
+      right: 36px;
+      bottom: 34px;
+      z-index: 2;
+    }
+
+    .hero-media-content h2 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(36px, 3.3vw, 58px);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .hero-media-content p {
+      margin: 18px 0 0;
+      max-width: 560px;
+      font-size: 18px;
+      line-height: 1.62;
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .badge-corner {
+      right: 18px;
+      top: 18px;
+      transform: rotate(-7deg);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(46px, 6vw, 86px);
+      line-height: 0.84;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+    }
+
+    .about,
+    .contacts-wrap {
+      position: relative;
+      border-radius: 34px;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .about {
+      min-height: 620px;
+      padding: 54px;
+    }
+
+    .about p {
+      max-width: 980px;
+      font-size: 18px;
+      line-height: 1.66;
+      color: rgba(255, 255, 255, 0.82);
+      margin: 26px 0 0;
+    }
+
+    .about p + p {
+      margin-top: 18px;
+    }
+
+    .services {
+      padding: 36px 0 12px;
+    }
+
+    .services-grid {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 260px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+      backdrop-filter: blur(16px);
+      padding: 30px;
+      overflow: hidden;
+    }
+
+    .card-tag {
+      display: inline-block;
+      background: var(--green);
+      color: #101010;
+      border-radius: 14px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 0 28px rgba(155, 226, 59, 0.30);
+    }
+
+    .service-content {
+      padding-top: 24px;
+    }
+
+    .service-content h3 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .service-content p {
+      margin: 14px 0 0;
+      font-size: 17px;
+      line-height: 1.64;
+      color: rgba(255, 255, 255, 0.80);
+    }
+
+    .clients {
+      text-align: center;
+      padding: 40px 0 18px;
+    }
+
+    .section-lead {
+      max-width: 1100px;
+      margin: 18px auto 0;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.62;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .clients-marquee-wrap {
+      overflow: hidden;
+      margin-top: 34px;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+    }
+
+    .clients-marquee {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: marquee 16s linear infinite;
+    }
+
+    .clients-marquee.reverse {
+      margin-top: 20px;
+      animation-duration: 19s;
+      animation-direction: reverse;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .client-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      width: 320px;
+      height: 110px;
+      padding: 0 24px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      backdrop-filter: blur(14px);
+      flex-shrink: 0;
+    }
+
+    .client-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, #171717, #0b0b0b);
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .client-meta {
+      text-align: left;
+    }
+
+    .client-meta strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .client-meta span {
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.56);
+    }
+
+    .cta {
+      width: min(1560px, calc(100% - 96px));
+      margin: 20px auto 0;
+      border-radius: 34px;
+      background: linear-gradient(180deg, #5321b9 0%, #4a17a8 100%);
+      box-shadow: 0 0 70px rgba(114,76,255,0.25);
+      padding: 32px 40px;
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .cta h3 {
+      margin: 0;
+      max-width: 880px;
+      font-size: 52px;
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .cta p {
+      max-width: 900px;
+      margin: 16px 0 0;
+      font-size: 18px;
+      line-height: 1.58;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .contacts {
+      padding: 34px 0 78px;
+    }
+
+    .contacts-wrap {
+      padding: 32px 32px 40px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .contact-card {
+      min-height: 150px;
+      padding: 26px 28px;
+      text-decoration: none;
+      color: #fff;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.30);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .contact-value {
+      margin-top: 22px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .footer-copy {
+      margin-top: 36px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(122,91,255,0.95), rgba(83,35,221,0.95));
+      color: #fff;
+      text-decoration: none;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      font-weight: 700;
+      box-shadow: 0 14px 34px rgba(83,35,221,0.32);
+    }
+
+    @media (max-width: 1200px) {
+      .hero-grid,
+      .cta-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .contacts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-right {
+        min-height: auto;
+      }
+
+      .cta {
+        width: calc(100% - 32px);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(100% - 24px, 1680px);
+      }
+
+      .hero-title .line-top {
+        font-size: 58px;
+        margin-bottom: 10px;
+      }
+
+      .hero-title .line-bottom {
+        font-size: 54px;
+        white-space: normal;
+      }
+
+      .hero-copy p,
+      .about p,
+      .section-lead {
+        font-size: 17px;
+      }
+
+      .services-grid,
+      .contacts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+        padding: 18px 24px;
+        font-size: 18px;
+      }
+
+      .cta h3 {
+        font-size: 34px;
+      }
+
+      .about {
+        padding: 26px;
+      }
+
+      .contact-value {
+        font-size: 24px;
+      }
+
+      .client-card {
+        width: 280px;
+      }
+
+      .badge-hero {
+        right: 6px;
+        top: -34px;
+      }
+
+      .cta {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>ПРОДАКШЕН<br>АРТЕМ АГЕЕВ</h1>
-<div class="card">YouTube</div>
-<div class="card">Motion</div>
-<div class="card">Design</div>
+  <a href="#hero" class="to-top" aria-label="Наверх">↑</a>
+
+  <div class="page">
+    <header class="header">
+      <div class="shell">
+        <nav class="nav">
+          <a href="#hero">Главная</a>
+          <a href="#about">О нас</a>
+          <a href="#services">Услуги</a>
+          <a href="#clients">Клиенты</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <h1 class="hero-title">
+              <span class="line-top">Продакшен</span>
+              <span class="line-bottom">Артем Агеев</span>
+            </h1>
+
+            <div class="hero-copy">
+              <p>
+                Здесь начинается визуальная подача, которая выглядит дорого, собрано и современно.
+                Я не просто монтирую ролики — я собираю эмоцию, ритм и стиль, чтобы видео работало
+                на впечатление, узнаваемость и силу бренда.
+              </p>
+              <p>
+                Со мной ты получаешь монтаж, моушен-дизайн, рекламную упаковку и визуальные решения,
+                которые помогают проекту выделяться, удерживать внимание и выглядеть на профессиональном уровне.
+              </p>
+            </div>
+
+            <div class="hero-actions">
+              <div class="badge badge-hero">Кейсы, стиль и<br />сильная подача</div>
+              <a class="btn" href="portfolio.html">Смотреть портфолио</a>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-media">
+              <div class="badge badge-corner">реализованные<br />видео</div>
+
+              <div class="hero-media-content">
+                <h2>Монтаж, motion design и визуальная упаковка</h2>
+                <p>
+                  Работаю с блогерами, брендами и коммерческими проектами.
+                  Собираю ролики, которые выглядят уверенно, дорого и современно.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="shell">
+          <div class="about">
+            <h2 class="section-title">О нас</h2>
+            <p>
+              Продакшен Артема Агеева — это не просто монтаж, а цельный визуальный подход,
+              в котором важны ритм, графика, композиция и ощущение уровня.
+            </p>
+            <p>
+              Я собираю ролики так, чтобы они выглядели собранно, современно
+              и производили сильное впечатление с первых секунд.
+            </p>
+            <p>
+              В итоге клиент получает не набор эффектов, а сильный и аккуратно собранный результат.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services">
+        <div class="shell">
+          <h2 class="section-title">Услуги</h2>
+
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="card-tag">ютуб</div>
+              <div class="service-content">
+                <h3>YouTube</h3>
+                <p>Длинные выпуски, интервью, экспертные форматы, нарезки и удержание внимания на протяжении всего ролика.</p>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="card-tag">рилс</div>
+              <div class="service-content">
+                <h3>Reels</h3>
+                <p>Вертикальные ролики с хуками, титрами, ритмом и плотной подачей под социальные сети.</p>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="card-tag">шортс</div>
+              <div class="service-content">
+                <h3>Shorts</h3>
+                <p>Короткие видео с быстрым захватом внимания, динамичным монтажом и аккуратной структурой.</p>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="card-tag">моушен</div>
+              <div class="service-content">
+                <h3>Motion Design</h3>
+                <p>Анимация, графика, заставки, типографика и акценты, которые выглядят дорого и современно.</p>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="card-tag">дизайн</div>
+              <div class="service-content">
+                <h3>Графический дизайн</h3>
+                <p>Баннеры, превью, обложки и рекламные материалы с сильной композицией и дорогой подачей.</p>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="card-tag">боты</div>
+              <div class="service-content">
+                <h3>Создание ботов</h3>
+                <p>Telegram-боты, сценарии взаимодействия, автоматизация заявок, воронки и удобная упаковка под задачу.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="clients" class="clients">
+        <div class="shell">
+          <h2 class="section-title">Наши клиенты</h2>
+          <p class="section-lead">
+            Со мной сотрудничают локальные бренды, небольшие компании,
+            коммерческие студии и digital-проекты, которым нужен сильный монтаж и визуально уверенная подача.
+          </p>
+        </div>
+
+        <div class="clients-marquee-wrap">
+          <div class="clients-marquee">
+            <div class="client-card"><div class="client-logo">NF</div><div class="client-meta"><strong>Nord Frame</strong><span>продакшен / медиа</span></div></div>
+            <div class="client-card"><div class="client-logo">UT</div><div class="client-meta"><strong>Urban Taste</strong><span>food / visual</span></div></div>
+            <div class="client-card"><div class="client-logo">PH</div><div class="client-meta"><strong>Pixel House</strong><span>design / content</span></div></div>
+            <div class="client-card"><div class="client-logo">DP</div><div class="client-meta"><strong>Drive Point</strong><span>auto / media</span></div></div>
+            <div class="client-card"><div class="client-logo">LU</div><div class="client-meta"><strong>Level Up</strong><span>education / promo</span></div></div>
+            <div class="client-card"><div class="client-logo">KL</div><div class="client-meta"><strong>Kedr Lab</strong><span>creative / branding</span></div></div>
+            <div class="client-card"><div class="client-logo">SM</div><div class="client-meta"><strong>Signal Media</strong><span>ads / content</span></div></div>
+
+            <div class="client-card"><div class="client-logo">NF</div><div class="client-meta"><strong>Nord Frame</strong><span>продакшен / медиа</span></div></div>
+            <div class="client-card"><div class="client-logo">UT</div><div class="client-meta"><strong>Urban Taste</strong><span>food / visual</span></div></div>
+            <div class="client-card"><div class="client-logo">PH</div><div class="client-meta"><strong>Pixel House</strong><span>design / content</span></div></div>
+          </div>
+        </div>
+
+        <div class="shell">
+          <div class="cta">
+            <div class="cta-inner">
+              <div>
+                <h3>Проекты, которые выглядят сильно на любой площадке</h3>
+                <p>
+                  Я подготовил расширенную страницу с YouTube-видео, кейсами по дизайну,
+                  motion, Shorts, Reels и решениями по созданию ботов.
+                </p>
+              </div>
+              <a class="btn" href="portfolio.html">Посмотреть портфолио</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" class="contacts">
+        <div class="shell">
+          <div class="contacts-wrap">
+            <h2 class="section-title center">Контакты</h2>
+            <p class="section-lead">
+              Готов подключиться к разовым задачам, постоянному сотрудничеству и регулярной работе с контентом.
+            </p>
+
+            <div class="contacts-grid">
+              <a class="contact-card" href="https://t.me/Maagic45" target="_blank" rel="noreferrer">
+                <div class="contact-label">Telegram</div>
+                <div class="contact-value">@Maagic45</div>
+              </a>
+
+              <a class="contact-card" href="tel:+79630103405">
+                <div class="contact-label">MAX</div>
+                <div class="contact-value">+7 963 010-34-05</div>
+              </a>
+
+              <a class="contact-card" href="mailto:ageev_98@internet.ru">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">ageev_98@internet.ru</div>
+              </a>
+
+              <a class="contact-card" href="#contacts">
+                <div class="contact-label">Формат работы</div>
+                <div class="contact-value">Удалённо / РФ и СНГ</div>
+              </a>
+            </div>
+
+            <div class="footer-copy">Copyright © 2025 ArtemAgeev. All Rights Reserved.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
