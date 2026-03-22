@@ -115,6 +115,7 @@
       background: rgba(0, 0, 0, 0.24);
       border: 1px solid var(--line);
       transition: 0.25s ease;
+      will-change: transform, box-shadow, border-color, background;
     }
 
     .nav a:hover {
@@ -122,6 +123,7 @@
       color: #fff;
       border-color: rgba(122, 91, 255, 0.45);
       background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 18px rgba(114, 76, 255, 0.14);
     }
 
     .hero {
@@ -233,10 +235,12 @@
       transition: 0.25s ease;
       position: relative;
       z-index: 2;
+      will-change: transform, box-shadow, border-color, background;
     }
 
     .btn:hover {
-      transform: translateY(-3px) scale(1.015);
+      transform: translateY(-3px) scale(1.02);
+      filter: brightness(1.06);
     }
 
     .tag {
@@ -296,6 +300,12 @@
       opacity: 0.72;
       filter: saturate(1.05) contrast(1.04);
       transform: scale(1.03);
+      transition: transform 0.9s ease, opacity 0.6s ease, filter 0.6s ease;
+    }
+
+    .hero-visual:hover .hero-video-shell video {
+      transform: scale(1.06);
+      filter: saturate(1.08) contrast(1.06);
     }
 
     .hero-video-shell::before {
@@ -385,6 +395,12 @@
         40% 20%
       );
       animation: float 8s ease-in-out infinite;
+      transition: transform 0.5s ease, filter 0.5s ease, opacity 0.5s ease;
+    }
+
+    .hero-visual:hover .glass-star,
+    .hero:hover .glass-star {
+      filter: brightness(1.08) saturate(1.06);
     }
 
     @keyframes float {
@@ -435,6 +451,13 @@
         radial-gradient(circle at center, #000 82%, transparent 100%);
       mask-image:
         radial-gradient(circle at center, #000 82%, transparent 100%);
+      transition: transform 0.9s ease, opacity 0.6s ease, filter 0.6s ease;
+    }
+
+    .about:hover video {
+      transform: scale(1.05);
+      opacity: 0.38;
+      filter: saturate(1.04) contrast(1.04);
     }
 
     .about::after {
@@ -513,10 +536,14 @@
       text-decoration: none;
       color: #fff;
       cursor: pointer;
+      will-change: transform, box-shadow, border-color, background;
     }
 
     .service-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
+      box-shadow:
+        0 28px 70px rgba(0, 0, 0, 0.30),
+        0 0 40px rgba(114, 76, 255, 0.14);
     }
 
     .service-card video {
@@ -527,6 +554,13 @@
       object-fit: cover;
       opacity: 0.18;
       transform: scale(1.04);
+      transition: transform 0.9s ease, opacity 0.6s ease, filter 0.6s ease;
+    }
+
+    .service-card:hover video {
+      transform: scale(1.08);
+      opacity: 0.24;
+      filter: saturate(1.08) contrast(1.06);
     }
 
     .service-card::after {
@@ -537,6 +571,34 @@
         radial-gradient(circle at 20% 20%, rgba(122, 91, 255, 0.12), transparent 20%),
         linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.64));
       z-index: 1;
+    }
+
+    .service-card::before,
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: -120% auto auto -40%;
+      width: 55%;
+      height: 240%;
+      transform: rotate(18deg);
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.03) 35%,
+        rgba(255,255,255,0.14) 50%,
+        rgba(255,255,255,0.03) 65%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease, transform 0.8s ease;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .service-card:hover::before,
+    .contact-card:hover::before {
+      opacity: 1;
+      transform: translateX(165%) rotate(18deg);
     }
 
     .service-card .card-tag {
@@ -641,6 +703,15 @@
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
       backdrop-filter: blur(14px);
       flex-shrink: 0;
+      will-change: transform, box-shadow, border-color, background;
+      transition: 0.25s ease;
+    }
+
+    .client-card:hover {
+      transform: translateY(-8px);
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.24),
+        0 0 30px rgba(114, 76, 255, 0.10);
     }
 
     .client-logo {
@@ -776,12 +847,17 @@
       flex-direction: column;
       justify-content: space-between;
       transition: 0.25s ease;
+      will-change: transform, box-shadow, border-color, background;
+      overflow: hidden;
     }
 
     .contact-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-8px);
       border-color: rgba(122, 91, 255, 0.45);
       background: rgba(0, 0, 0, 0.4);
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.24),
+        0 0 30px rgba(114, 76, 255, 0.10);
     }
 
     .contact-label {
@@ -831,6 +907,61 @@
     .to-top:hover {
       transform: translateY(-4px);
     }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(38px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-42px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal-left.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(42px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal-right.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: translateY(24px) scale(0.96);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal-scale.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+    .delay-5 { transition-delay: 0.40s; }
+    .delay-6 { transition-delay: 0.48s; }
 
     @media (max-width: 1200px) {
       .hero-grid,
@@ -918,6 +1049,27 @@
         width: 100%;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal,
+      .reveal-left,
+      .reveal-right,
+      .reveal-scale,
+      .service-card,
+      .client-card,
+      .contact-card,
+      .btn,
+      .nav a,
+      .service-card video,
+      .hero-video-shell video,
+      .about video,
+      .glass-star {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -926,7 +1078,7 @@
   <div class="page">
     <div class="section-inner">
       <div class="nav-wrap">
-        <div class="nav">
+        <div class="nav reveal-scale">
           <a href="#hero">Главная</a>
           <a href="#about">О нас</a>
           <a href="#services">Услуги</a>
@@ -940,23 +1092,23 @@
       <div class="section-inner">
         <div class="hero-grid">
           <div>
-            <h1 class="hero-title">
+            <h1 class="hero-title reveal-left">
               <span class="line-top">Продакшен</span>
               <span class="line-bottom">Артем Агеев</span>
             </h1>
 
-            <div class="hero-copy">
+            <div class="hero-copy reveal-left delay-1">
               <p>Здесь начинается визуальная подача, которая выглядит дорого, собрано и современно. Я не просто монтирую ролики — я собираю эмоцию, ритм и стиль, чтобы видео работало на впечатление, узнаваемость и силу бренда.</p>
               <p>Со мной ты получаешь монтаж, моушен-дизайн, рекламную упаковку и визуальные решения, которые помогают проекту выделяться, удерживать внимание и выглядеть на профессиональном уровне.</p>
             </div>
 
-            <div class="btn-wrap">
+            <div class="btn-wrap reveal-left delay-2">
               <div class="tag hero-btn">Кейсы, стиль и<br>сильная подача</div>
               <a class="btn" href="portfolio.html">Смотреть портфолио</a>
             </div>
           </div>
 
-          <div class="hero-visual">
+          <div class="hero-visual reveal-right delay-2">
             <div class="glass-star" style="right: 12px; top: 18px; width: 150px; height: 150px;"></div>
             <div class="glass-star" style="right: 24px; bottom: -10px; width: 120px; height: 120px; animation-duration: 7s;"></div>
 
@@ -979,7 +1131,7 @@
 
     <section id="about" class="section">
       <div class="section-inner">
-        <div class="about">
+        <div class="about reveal-scale">
           <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
 
           <div class="about-content">
@@ -997,10 +1149,10 @@
 
     <section id="services" class="services">
       <div class="section-inner">
-        <h2 class="section-title">Услуги</h2>
+        <h2 class="section-title reveal">Услуги</h2>
 
         <div class="services-grid">
-          <a class="service-card" href="portfolio.html#youtube">
+          <a class="service-card reveal delay-1" href="portfolio.html#youtube">
             <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
             <div class="card-tag">ютуб</div>
             <div class="service-content">
@@ -1009,7 +1161,7 @@
             </div>
           </a>
 
-          <a class="service-card" href="portfolio.html#reels">
+          <a class="service-card reveal delay-2" href="portfolio.html#reels">
             <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
             <div class="card-tag">рилс</div>
             <div class="service-content">
@@ -1018,7 +1170,7 @@
             </div>
           </a>
 
-          <a class="service-card" href="portfolio.html#shorts">
+          <a class="service-card reveal delay-3" href="portfolio.html#shorts">
             <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
             <div class="card-tag">шортс</div>
             <div class="service-content">
@@ -1027,7 +1179,7 @@
             </div>
           </a>
 
-          <a class="service-card" href="portfolio.html#motion">
+          <a class="service-card reveal delay-1" href="portfolio.html#motion">
             <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
             <div class="card-tag">моушен</div>
             <div class="service-content">
@@ -1036,7 +1188,7 @@
             </div>
           </a>
 
-          <a class="service-card" href="portfolio.html#design">
+          <a class="service-card reveal delay-2" href="portfolio.html#design">
             <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/hero.mp4"></video>
             <div class="card-tag">дизайн</div>
             <div class="service-content">
@@ -1045,7 +1197,7 @@
             </div>
           </a>
 
-          <a class="service-card" href="portfolio.html#bots">
+          <a class="service-card reveal delay-3" href="portfolio.html#bots">
             <video class="auto-video" autoplay muted loop playsinline preload="auto" src="assets/about.mp4"></video>
             <div class="card-tag">боты</div>
             <div class="service-content">
@@ -1062,8 +1214,8 @@
         <div class="glass-star" style="left: -10px; top: 6px; width: 150px; height: 150px; opacity: 0.84;"></div>
         <div class="glass-star" style="right: 18px; bottom: 22px; width: 120px; height: 120px; opacity: 0.8;"></div>
 
-        <h2 class="section-title clients-title">Наши клиенты</h2>
-        <p>Со мной сотрудничают локальные бренды, небольшие компании, коммерческие студии и digital-проекты, которым нужен сильный монтаж и визуально уверенная подача.</p>
+        <h2 class="section-title clients-title reveal">Наши клиенты</h2>
+        <p class="reveal delay-1">Со мной сотрудничают локальные бренды, небольшие компании, коммерческие студии и digital-проекты, которым нужен сильный монтаж и визуально уверенная подача.</p>
       </div>
 
       <div class="marquee-wrap">
@@ -1093,7 +1245,7 @@
       </div>
 
       <div class="section-inner">
-        <div class="cta">
+        <div class="cta reveal-scale">
           <div class="cta-inner">
             <div>
               <h3>Проекты, которые выглядят сильно на любой площадке</h3>
@@ -1107,7 +1259,7 @@
 
     <section id="contacts" class="contacts">
       <div class="section-inner">
-        <div class="panel contacts-inner">
+        <div class="panel contacts-inner reveal-scale">
           <h2 class="section-title" style="text-align:center;">Контакты</h2>
           <p class="lead">Готов подключиться к разовым задачам, постоянному сотрудничеству и регулярной работе с контентом. Все карточки ниже кликабельны для быстрого перехода.</p>
 
@@ -1171,8 +1323,35 @@
       });
     }
 
+    function initRevealAnimations() {
+      const items = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale");
+
+      if (!("IntersectionObserver" in window)) {
+        items.forEach((item) => item.classList.add("is-visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.14,
+        rootMargin: "0px 0px -40px 0px"
+      });
+
+      items.forEach((item) => observer.observe(item));
+    }
+
     window.addEventListener("load", forcePlayVideos);
-    document.addEventListener("DOMContentLoaded", forcePlayVideos);
+    document.addEventListener("DOMContentLoaded", () => {
+      forcePlayVideos();
+      initRevealAnimations();
+    });
+
     document.addEventListener("visibilitychange", () => {
       if (!document.hidden) {
         forcePlayVideos();
