@@ -61,7 +61,7 @@
     }
 
     .section-inner {
-      width: min(1680px, calc(100% - 64px));
+      width: min(1780px, calc(100% - 28px));
       margin: 0 auto;
       position: relative;
     }
@@ -72,7 +72,7 @@
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 34px;
-      overflow: hidden;
+      overflow: visible;
       box-shadow: 0 20px 80px rgba(0, 0, 0, 0.22);
     }
 
@@ -135,9 +135,9 @@
 
     .hero {
       position: relative;
-      padding: 34px 0 12px;
+      padding: 34px 0 20px;
       text-align: center;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .glass-star {
@@ -198,6 +198,7 @@
       overflow: hidden;
       transition: 0.28s ease;
       box-shadow: 0 16px 44px rgba(0, 0, 0, 0.2);
+      scroll-margin-top: 24px;
     }
 
     .card:hover {
@@ -273,14 +274,7 @@
     }
 
     .note {
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(0, 0, 0, 0.25);
-      font-size: 14px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.56);
+      display: none;
     }
 
     @media (max-width: 1200px) {
@@ -337,7 +331,7 @@
       </section>
 
       <div class="grid">
-        <div class="card">
+        <div class="card" id="youtube">
           <div class="card-bg"></div>
           <div class="tag">реализованные видео</div>
           <div class="frame">
@@ -350,7 +344,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="reels">
           <div class="card-bg"></div>
           <div class="tag">реализованные видео</div>
           <div class="frame">
@@ -363,7 +357,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="shorts">
           <div class="card-bg"></div>
           <div class="tag">реализованные видео</div>
           <div class="frame">
@@ -376,7 +370,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="motion">
           <div class="card-bg"></div>
           <div class="tag">реализованные видео</div>
           <div class="frame">
@@ -389,7 +383,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="design">
           <div class="card-bg"></div>
           <div class="tag">реализованные видео</div>
           <div class="frame">
@@ -402,7 +396,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="bots">
           <div class="card-bg"></div>
           <div class="tag">реализованные видео</div>
           <div class="frame">
