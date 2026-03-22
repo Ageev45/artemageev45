@@ -206,6 +206,18 @@
       }
     }
 
+    @keyframes ctaFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
     .btn {
       display: inline-block;
       text-decoration: none;
@@ -264,17 +276,18 @@
 
     .hero-visual {
       position: relative;
-      min-height: 700px;
+      min-height: 760px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       overflow: visible;
     }
 
     .hero-card {
       position: relative;
-      width: 100%;
-      min-height: 560px;
+      width: calc(100% + 96px);
+      min-height: 620px;
+      margin-right: -96px;
       overflow: visible;
     }
 
@@ -433,9 +446,9 @@
       border: none;
       box-shadow: none;
       background: transparent;
-      width: calc(100% + 72px);
-      margin-left: -36px;
-      margin-right: -36px;
+      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
       border-radius: 34px;
     }
 
@@ -446,11 +459,11 @@
       height: 100%;
       object-fit: cover;
       opacity: 0.34;
-      transform: scale(1.02);
+      transform: scale(1.03);
       -webkit-mask-image:
-        radial-gradient(circle at center, #000 82%, transparent 100%);
+        radial-gradient(circle at center, #000 86%, transparent 100%);
       mask-image:
-        radial-gradient(circle at center, #000 82%, transparent 100%);
+        radial-gradient(circle at center, #000 86%, transparent 100%);
       transition: transform 0.9s ease, opacity 0.6s ease, filter 0.6s ease;
     }
 
@@ -467,18 +480,19 @@
       background:
         linear-gradient(
           90deg,
-          rgba(4, 4, 10, 0.96) 0%,
-          rgba(8, 8, 16, 0.76) 16%,
-          rgba(8, 8, 16, 0.52) 34%,
-          rgba(8, 8, 16, 0.52) 66%,
-          rgba(8, 8, 16, 0.76) 84%,
-          rgba(4, 4, 10, 0.96) 100%
+          rgba(3, 3, 8, 0.98) 0%,
+          rgba(6, 6, 14, 0.88) 10%,
+          rgba(8, 8, 16, 0.56) 26%,
+          rgba(8, 8, 16, 0.34) 50%,
+          rgba(8, 8, 16, 0.56) 74%,
+          rgba(6, 6, 14, 0.88) 90%,
+          rgba(3, 3, 8, 0.98) 100%
         ),
         radial-gradient(circle at 80% 20%, rgba(122, 91, 255, 0.14), transparent 22%);
       -webkit-mask-image:
-        radial-gradient(circle at center, #000 82%, transparent 100%);
+        radial-gradient(circle at center, #000 88%, transparent 100%);
       mask-image:
-        radial-gradient(circle at center, #000 82%, transparent 100%);
+        radial-gradient(circle at center, #000 88%, transparent 100%);
     }
 
     .about-content {
@@ -667,17 +681,38 @@
       margin-left: calc(50% - 50vw);
     }
 
+    .marquee-wrap::before,
+    .marquee-wrap::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 180px;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .marquee-wrap::before {
+      left: 0;
+      background: linear-gradient(90deg, rgba(4, 4, 9, 0.98) 0%, rgba(4, 4, 9, 0.72) 45%, rgba(4, 4, 9, 0) 100%);
+    }
+
+    .marquee-wrap::after {
+      right: 0;
+      background: linear-gradient(270deg, rgba(4, 4, 9, 0.98) 0%, rgba(4, 4, 9, 0.72) 45%, rgba(4, 4, 9, 0) 100%);
+    }
+
     .marquee {
       display: flex;
       gap: 20px;
       width: max-content;
-      animation: marquee 16s linear infinite;
+      animation: marquee 20s linear infinite;
       padding-left: 0;
     }
 
     .marquee.reverse {
       margin-top: 20px;
-      animation-duration: 19s;
+      animation-duration: 24s;
       animation-direction: reverse;
     }
 
@@ -695,7 +730,7 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      width: 320px;
+      width: 340px;
       height: 110px;
       padding: 0 24px;
       border-radius: 24px;
@@ -718,13 +753,11 @@
       width: 58px;
       height: 58px;
       border-radius: 18px;
-      display: grid;
-      place-items: center;
       border: 1px solid rgba(255, 255, 255, 0.12);
       background: linear-gradient(180deg, #171717, #0b0b0b);
-      font-size: 18px;
-      font-weight: 800;
-      text-transform: uppercase;
+      object-fit: contain;
+      padding: 10px;
+      flex-shrink: 0;
     }
 
     .client-meta {
@@ -752,7 +785,16 @@
       margin: 20px auto 0;
       border-radius: 34px;
       border: 1px solid rgba(149, 116, 255, 0.2);
-      background: linear-gradient(180deg, #5321b9 0%, #4a17a8 100%);
+      background: linear-gradient(
+        120deg,
+        #4b18a8 0%,
+        #6a31ff 20%,
+        #7f4dff 45%,
+        #5c23d8 70%,
+        #7a5bff 100%
+      );
+      background-size: 220% 220%;
+      animation: ctaFlow 8s ease-in-out infinite;
       box-shadow:
         0 0 70px rgba(114, 76, 255, 0.25),
         0 18px 70px rgba(88, 38, 220, 0.18);
@@ -974,12 +1016,88 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .hero-grid {
+        gap: 34px;
+      }
+
       .hero-visual {
         min-height: auto;
+        justify-content: center;
+      }
+
+      .hero-card {
+        width: 100%;
+        min-height: 560px;
+        margin-right: 0;
+      }
+
+      .about-content {
+        padding: 42px 34px;
+      }
+
+      .clients p {
+        font-size: 19px;
       }
 
       .cta {
         width: calc(100% - 32px);
+      }
+
+      .cta h3 {
+        font-size: 42px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title .line-top {
+        font-size: clamp(60px, 12vw, 96px);
+      }
+
+      .hero-title .line-bottom {
+        font-size: clamp(54px, 10.5vw, 88px);
+        white-space: normal;
+      }
+
+      .hero-copy p,
+      .about p,
+      .clients p,
+      .cta p,
+      .lead {
+        font-size: 17px;
+        line-height: 1.58;
+      }
+
+      .hero-card {
+        min-height: 500px;
+      }
+
+      .hero-card-content {
+        left: 24px;
+        right: 24px;
+        bottom: 24px;
+      }
+
+      .hero-card-content h2 {
+        max-width: 500px;
+        font-size: clamp(26px, 6.2vw, 40px);
+      }
+
+      .hero-card-content p {
+        font-size: 16px;
+        max-width: 460px;
+      }
+
+      .cta {
+        width: calc(100% - 24px);
+        padding: 26px 22px;
+      }
+
+      .cta h3 {
+        font-size: 34px;
       }
     }
 
@@ -1027,9 +1145,10 @@
       }
 
       .about {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
+        width: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 26px;
       }
 
       .contact-value {
@@ -1038,6 +1157,11 @@
 
       .client-card {
         width: 280px;
+      }
+
+      .marquee-wrap::before,
+      .marquee-wrap::after {
+        width: 72px;
       }
 
       .tag.hero-btn {
@@ -1220,27 +1344,35 @@
 
       <div class="marquee-wrap">
         <div class="marquee">
-          <div class="client-card"><div class="client-logo">NF</div><div class="client-meta"><strong>Nord Frame</strong><span>продакшен / медиа</span></div></div>
-          <div class="client-card"><div class="client-logo">UT</div><div class="client-meta"><strong>Urban Taste</strong><span>food / visual</span></div></div>
-          <div class="client-card"><div class="client-logo">PH</div><div class="client-meta"><strong>Pixel House</strong><span>design / content</span></div></div>
-          <div class="client-card"><div class="client-logo">DP</div><div class="client-meta"><strong>Drive Point</strong><span>auto / media</span></div></div>
-          <div class="client-card"><div class="client-logo">LU</div><div class="client-meta"><strong>Level Up</strong><span>education / promo</span></div></div>
-          <div class="client-card"><div class="client-logo">KL</div><div class="client-meta"><strong>Kedr Lab</strong><span>creative / branding</span></div></div>
-          <div class="client-card"><div class="client-logo">SM</div><div class="client-meta"><strong>Signal Media</strong><span>ads / content</span></div></div>
-          <div class="client-card"><div class="client-logo">NF</div><div class="client-meta"><strong>Nord Frame</strong><span>продакшен / медиа</span></div></div>
-          <div class="client-card"><div class="client-logo">UT</div><div class="client-meta"><strong>Urban Taste</strong><span>food / visual</span></div></div>
-          <div class="client-card"><div class="client-logo">PH</div><div class="client-meta"><strong>Pixel House</strong><span>design / content</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/skalhelsinki.fi" alt="Skål Helsinki logo" /><div class="client-meta"><strong>Skål Helsinki</strong><span>production / commercials</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/smallfilms.com" alt="Small Films logo" /><div class="client-meta"><strong>Small Films</strong><span>video production / brand films</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/tinystudio.tv" alt="Tiny Studio logo" /><div class="client-meta"><strong>Tiny Studio</strong><span>video agency / crafted content</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/studio-size.com" alt="Studio Size logo" /><div class="client-meta"><strong>Studio Size</strong><span>branding / motion</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/moose.com.mt" alt="Moose Design logo" /><div class="client-meta"><strong>Moose Design</strong><span>design / branding</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/helsinkicreative.agency" alt="Helsinki Agency logo" /><div class="client-meta"><strong>Helsinki Agency</strong><span>creative / content</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/kukoocreative.com" alt="Kukoo Creative logo" /><div class="client-meta"><strong>Kukoo Creative</strong><span>small business / design</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/the-set-filmstudio.com" alt="The Set Film logo" /><div class="client-meta"><strong>The Set Film</strong><span>boutique / corporate video</span></div></div>
+
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/skalhelsinki.fi" alt="Skål Helsinki logo" /><div class="client-meta"><strong>Skål Helsinki</strong><span>production / commercials</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/smallfilms.com" alt="Small Films logo" /><div class="client-meta"><strong>Small Films</strong><span>video production / brand films</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/tinystudio.tv" alt="Tiny Studio logo" /><div class="client-meta"><strong>Tiny Studio</strong><span>video agency / crafted content</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/studio-size.com" alt="Studio Size logo" /><div class="client-meta"><strong>Studio Size</strong><span>branding / motion</span></div></div>
         </div>
 
         <div class="marquee reverse">
-          <div class="client-card"><div class="client-logo">VR</div><div class="client-meta"><strong>Vision Room</strong><span>studio / commercial</span></div></div>
-          <div class="client-card"><div class="client-logo">PS</div><div class="client-meta"><strong>Pulse Studio</strong><span>motion / promo</span></div></div>
-          <div class="client-card"><div class="client-logo">SK</div><div class="client-meta"><strong>Skyline</strong><span>brand / campaign</span></div></div>
-          <div class="client-card"><div class="client-logo">NB</div><div class="client-meta"><strong>North Base</strong><span>visual / digital</span></div></div>
-          <div class="client-card"><div class="client-logo">FC</div><div class="client-meta"><strong>Food Craft</strong><span>retail / content</span></div></div>
-          <div class="client-card"><div class="client-logo">VR</div><div class="client-meta"><strong>Vision Room</strong><span>studio / commercial</span></div></div>
-          <div class="client-card"><div class="client-logo">PS</div><div class="client-meta"><strong>Pulse Studio</strong><span>motion / promo</span></div></div>
-          <div class="client-card"><div class="client-logo">SK</div><div class="client-meta"><strong>Skyline</strong><span>brand / campaign</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/smalltheagency.com" alt="SMALL logo" /><div class="client-meta"><strong>SMALL</strong><span>creative agency / independent</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/minimum.run" alt="Minimum logo" /><div class="client-meta"><strong>Minimum</strong><span>growth / design</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/lessrain.com" alt="Less Rain logo" /><div class="client-meta"><strong>Less Rain</strong><span>creative / storytelling</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/asmallstudio.com" alt="a small studio logo" /><div class="client-meta"><strong>a small studio</strong><span>product / design</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/uncommon.studio" alt="Uncommon logo" /><div class="client-meta"><strong>Uncommon</strong><span>creative studio / branding</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/boutique.film" alt="Boutique Films logo" /><div class="client-meta"><strong>Boutique Films</strong><span>film / production</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/studio8design.com" alt="Studio 8 logo" /><div class="client-meta"><strong>Studio 8</strong><span>branding / web design</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/kingdomandsparrow.co.uk" alt="Kingdom and Sparrow logo" /><div class="client-meta"><strong>Kingdom & Sparrow</strong><span>branding / packaging</span></div></div>
+
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/smalltheagency.com" alt="SMALL logo" /><div class="client-meta"><strong>SMALL</strong><span>creative agency / independent</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/minimum.run" alt="Minimum logo" /><div class="client-meta"><strong>Minimum</strong><span>growth / design</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/lessrain.com" alt="Less Rain logo" /><div class="client-meta"><strong>Less Rain</strong><span>creative / storytelling</span></div></div>
+          <div class="client-card"><img class="client-logo" src="https://logo.clearbit.com/asmallstudio.com" alt="a small studio logo" /><div class="client-meta"><strong>a small studio</strong><span>product / design</span></div></div>
         </div>
       </div>
 
