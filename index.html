@@ -979,7 +979,47 @@
         border-radius: 26px;
       }
     }
+    /* === FIX РАЗМЕРОВ КАРТОЧЕК === */
 
+    .services-grid {
+      align-items: start !important;
+    }
+
+    .service-card {
+      height: 260px !important;
+      min-height: 260px !important;
+      max-height: 260px !important;
+      overflow: hidden !important;
+    }
+
+    .service-card video,
+    .service-card img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      z-index: 0 !important;
+    }
+
+    .service-content {
+      position: relative !important;
+      z-index: 3 !important;
+    }
+
+    @media (max-width: 1200px) {
+      .service-card {
+        height: 240px !important;
+        min-height: 240px !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .service-card {
+        height: 220px !important;
+        min-height: 220px !important;
+      }
+    }
     @media (prefers-reduced-motion: reduce) {
       .reveal,
       .reveal-left,
@@ -1124,7 +1164,7 @@
           </a>
 
           <a class="service-card reveal delay-2" href="portfolio.html#design">
-            <video class="assets/banner.png" autoplay muted loop playsinline preload="auto" src="assets/banner.png"></video>
+            <img src="assets/banner.png" alt="Графический дизайн">
             <div class="card-tag">дизайн</div>
             <div class="service-content">
               <h3>Графический дизайн</h3>
